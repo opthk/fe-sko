@@ -1,0 +1,17 @@
+#desc {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  background-color:#e7e7e7
+}
+
+#desc td, #desc th {
+  padding: 10px;
+}
+
+
+#desc th {
+  text-align: center;
+  background-color: rgba(1 , 75, 127, 0.7); 
+  color: white;
+}
