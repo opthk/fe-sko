@@ -79,7 +79,24 @@ class DefaultLayout extends Component {
       if (nextProps.myIdentity.ID_GROUP === 5) {
         this.setState({
           landing: <Redirect from="/" to="/dashboard-transaction" />,
-          landingStyle: { backgroundImage: `url(../../assets/img/wallpaper/wallpaper_1.jpg` },
+          landingStyle: {
+            backgroundImage: `url(../../assets/img/wallpaper/wallpaper_1.jpg)`,
+            backgroundSize: 'cover',
+            backgroundAttachment: 'fixed',
+            backgroundPosition: 'center',
+            position: 'relative',
+            minHeight: '100vh',
+            width: '100%',
+            overflow: 'hidden',
+          },
+          overlay: {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.6)' // Hitam dengan 50% kekaburan (transparansi)
+          },
           headerStyle: <AppHeader hidden>
             <Suspense fallback={this.loading()}>
               <DefaultHeader onLogout={e => this.signOut(e)} />
@@ -142,7 +159,24 @@ class DefaultLayout extends Component {
       }
       else if (nextProps.myIdentity.ID_GROUP === 5) {
         this.setState({
-          landingStyle: { backgroundImage: `url(../../assets/img/wallpaper/wallpaper_1.jpg` },
+          landingStyle: {
+            backgroundImage: `url(../../assets/img/wallpaper/wallpaper_1.jpg`,
+            backgroundSize: 'cover',
+            backgroundAttachment: 'fixed',
+            backgroundPosition: 'center',
+            position: 'relative',
+            minHeight: '100vh',
+            width: '100%',
+            overflow: 'hidden',
+          },
+          overlay: {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.6)' // Hitam dengan 50% kekaburan (transparansi)
+          }
         })
       }
       else {
@@ -164,6 +198,7 @@ class DefaultLayout extends Component {
           {this.state.sidebarStyle}
           {/* <main className="main" style={{ backgroundImage: `url(https://www.wallpaperup.com/uploads/wallpapers/2012/09/09/13488/cccbd13a14435316fad1681eb17fb6e1.jpg` }}> */}
           <main className="main" style={this.state.landingStyle}>
+            <div style={this.state.overlay}></div>
             {this.state.breadCumb}
             <Container fluid>
               <Suspense fallback={this.loading()}>

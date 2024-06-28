@@ -14,7 +14,7 @@ export const accidentActions = {
 function getLastAccident(branch_code) {
   const token = localStorage.getItem('x-access-token');
   return dispatch => {
-    axios.get(config.HK_DASHBOARD_GLOBAL_API + '/accident/last/'+branch_code, { headers: { 'x-access-token': token } })
+    axios.get(config.HK_DASHBOARD_GLOBAL_API + '/accident/last/' + branch_code, { headers: { 'x-access-token': token } })
       .then(response => {
         var accident = response.data.data
         var rawDataRuas = []
@@ -177,7 +177,7 @@ function getAccidentFilter(ruas_code) {
 function getAccident(id_ruas) {
   const token = localStorage.getItem('x-access-token');
   return dispatch => {
-    axios.get(config.HK_DASHBOARD_GLOBAL_API + '/getAccident/'+id_ruas, { headers: { 'x-access-token': token } })
+    axios.get(config.HK_DASHBOARD_GLOBAL_API + '/getAccident/' + id_ruas, { headers: { 'x-access-token': token } })
       .then(response => {
         var accident = response.data.data
         var rawDataRuas = []
@@ -219,6 +219,8 @@ function getAccidentRate(id_ruas) {
   return dispatch => {
     axios.get(config.HK_DASHBOARD_GLOBAL_API + '/accident/rate/' + id_ruas, { headers: { 'x-access-token': token } })
       .then(response => {
+        console.log('tesss');
+        console.log(response);
         let accident = []
         accident['count'] = []
         accident['type'] = []

@@ -119,6 +119,8 @@ function getPotholesOverview(branch_id) {
   return dispatch => {
     axios.get(config.HK_DASHBOARD_GLOBAL_API + '/potholes/overview/' + branch_id, { headers: { 'x-access-token': token } })
       .then(response => {
+        console.log('tesss');
+        console.log(response);
         const potholes = response.data.data
         dispatch(storeDataPotholesOverview(potholes));
       })

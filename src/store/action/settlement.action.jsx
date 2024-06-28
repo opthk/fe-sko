@@ -66,24 +66,24 @@ function getSettlementDaily() {
 
             let fillingData = today.getDate()
 
-            for(let h = 1;h<=fillingData;h++){
-              rawdata['rfs']['mandiri'].forEach((value,index)=>{
-                if(value.length!==fillingData){
+            for (let h = 1; h <= fillingData; h++) {
+              rawdata['rfs']['mandiri'].forEach((value, index) => {
+                if (value.length !== fillingData) {
                   rawdata['rfs']['mandiri'][index].push(0)
                 }
               })
-              rawdata['rfs']['bca'].forEach((value,index)=>{
-                if(value.length!==fillingData){
+              rawdata['rfs']['bca'].forEach((value, index) => {
+                if (value.length !== fillingData) {
                   rawdata['rfs']['bca'][index].push(0)
                 }
               })
-              rawdata['rfs']['bri'].forEach((value,index)=>{
-                if(value.length!==fillingData){
+              rawdata['rfs']['bri'].forEach((value, index) => {
+                if (value.length !== fillingData) {
                   rawdata['rfs']['bri'][index].push(0)
                 }
               })
-              rawdata['rfs']['bni'].forEach((value,index)=>{
-                if(value.length!==fillingData){
+              rawdata['rfs']['bni'].forEach((value, index) => {
+                if (value.length !== fillingData) {
                   rawdata['rfs']['bni'][index].push(0)
                 }
               })

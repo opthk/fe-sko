@@ -113,55 +113,68 @@ class DashboardTransaction extends Component {
             />
           </CardHeader>
           <CardBody>
-            <Row>
-              <Col lg="12">
-                <TransactionPercentage />
-              </Col>
-            </Row>
-            <Row>
-              <Col lg="6">
-                <TransactionDaily
-                  style_group={this.state.background_group}
-                  disable_title={this.props.disable_title}
-                  chart_height={this.state.chartHeight}
-                  isOverviewCabang={this.state.isOverviewCabang}
-                  isCommandCenter={this.state.isCommandCenter}
-                />
-              </Col>
-              <Col lg="6">
-                <TrafficDaily
-                  style_group={this.state.background_group}
-                  disable_title={true}
-                  chart_height={this.state.chartHeight}
-                  isOverviewCabang={this.state.isOverviewCabang}
-                  isCommandCenter={this.state.isCommandCenter}
-                />
-              </Col>
-            </Row>
-            <br />
-            <Row>
-              <Col lg="6">
-                <TransactionMonthly
-                  style_group={this.state.background_group}
-                  disable_title={true}
-                  chart_height={this.state.chartHeight}
-                  isOverviewCabang={this.state.isOverviewCabang}
-                  isCommandCenter={this.state.isCommandCenter}
-                />
-              </Col>
-              <Col lg="6">
-                <TrafficMonthly
-                  style_group={this.state.background_group}
-                  disable_title={true}
-                  chart_height={this.state.chartHeight}
-                  isOverviewCabang={this.state.isOverviewCabang}
-                  isCommandCenter={this.state.isCommandCenter}
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>&nbsp;</Col>
-            </Row>
+            <Col lg="12" style={{
+              background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.1))', // Gradasi dari gelap ke terang
+
+              paddingRight: '30px',
+              paddingLeft: '30px',
+              paddingBottom: '20px',
+              backdropFilter: 'blur(30px)', // Efek blur
+              color: 'white', // Warna teks putih
+              borderRadius: '8px', // Border radius
+              border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparan
+            }}>
+              <TransactionPercentage />
+              <Row >
+                <Col style={{
+                  color: 'white', // Warna teks putih
+                  padding: '20px',
+                  borderRadius: '30px', // Border radius
+                  border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+                }}>
+                  <TransactionDaily
+                    style_group={this.state.background_group}
+                    disable_title={this.props.disable_title}
+                    chart_height={this.state.chartHeight}
+                    isOverviewCabang={this.state.isOverviewCabang}
+                    isCommandCenter={this.state.isCommandCenter}
+                  />
+                  <div style={{ height: '20px' }}></div>
+                  <TransactionMonthly
+                    style_group={this.state.background_group}
+                    disable_title={true}
+                    chart_height={this.state.chartHeight}
+                    isOverviewCabang={this.state.isOverviewCabang}
+                    isCommandCenter={this.state.isCommandCenter}
+                  />
+                </Col>
+                <div style={{ width: '20px' }}></div>
+                <Col style={{
+                  color: 'white', // Warna teks putih
+                  padding: '20px',
+                  borderRadius: '30px', // Border radius
+                  border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparan
+                }}>
+                  <TrafficDaily
+                    style_group={this.state.background_group}
+                    disable_title={true}
+                    chart_height={this.state.chartHeight}
+                    isOverviewCabang={this.state.isOverviewCabang}
+                    isCommandCenter={this.state.isCommandCenter}
+                  />
+                  <div style={{ height: '20px' }}></div>
+                  <TrafficMonthly
+                    style_group={this.state.background_group}
+                    disable_title={true}
+                    chart_height={this.state.chartHeight}
+                    isOverviewCabang={this.state.isOverviewCabang}
+                    isCommandCenter={this.state.isCommandCenter}
+                  />
+                </Col>
+              </Row>
+            </Col>
+            <div style={{ height: '20px' }} />
+
           </CardBody>
         </Card>
       </div >

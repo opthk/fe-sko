@@ -285,6 +285,8 @@ function getPercentageTransactionTrafficByRealisasi(typeBranch) {
   return dispatch => {
     axios.get(config.HK_DASHBOARD_GLOBAL_API + '/transaction/percentage/bagihasil/' + typeBranch, { headers: { 'x-access-token': token } })
       .then(function (results) {
+        console.log('tesss');
+        console.log(results);
         dispatch(storeDataPercentage(results.data.data));
       })
   }

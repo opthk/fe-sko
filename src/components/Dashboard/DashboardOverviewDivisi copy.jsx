@@ -377,7 +377,7 @@ class DashboardOverviewDivisi extends Component {
             </Row>
             <Row>
               <Col>
-                <h1 style={{ color: '#fff' }} id="overview-title">Sistem Kendali Operasi Tol</h1>
+                <h1 style={{ color: '#fff' }} id="overview-title">Sistem Operasi Tol</h1>
               </Col>
             </Row>
             <Row>

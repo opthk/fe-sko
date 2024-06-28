@@ -64,38 +64,79 @@ class DashboardAccident extends Component {
     return (
       <div className="animated fadeIn">
         <Row>
-          <Col lg="4">
+          <Col lg="4" style={{
+            background: 'rgba(255, 255, 255, 0.06)',
+            backdropFilter: 'blur(30px)', // Efek blur
+            color: 'white', // Warna teks putih
+            borderRadius: '30px', // Border radius
+            border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+          }}>
             <AccidentDescription
               isCommandCenter={this.state.isCommandCenter}
             />
           </Col>
-          <Col lg="3">
+          <div style={{ width: '10px' }}></div>
+          <Col style={{
+            background: 'rgba(255, 255, 255, 0.06)',
+            backdropFilter: 'blur(30px)', // Efek blur
+            color: 'white', // Warna teks putih
+            borderRadius: '30px', // Border radius
+            border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+          }}>
             <AccidentOverview
               isCommandCenter={this.state.isCommandCenter}
             />
           </Col>
-          <Col lg="5">
+          <div style={{ width: '10px' }}></div>
+          <Col lg="4" style={{
+            background: 'rgba(255, 255, 255, 0.06)',
+            backdropFilter: 'blur(30px)', // Efek blur
+            color: 'white', // Warna teks putih
+            borderRadius: '30px', // Border radius
+            border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+          }}>
             <AccidentTable
               data={this.state.dataLastAccident}
               isCommandCenter={this.state.isCommandCenter}
             />
           </Col>
         </Row>
+        <div style={{ height: '10px' }}></div>
         <Row>
-          <Col lg="4">
+          <Col lg="4" style={{
+            background: 'rgba(255, 255, 255, 0.06)',
+            backdropFilter: 'blur(30px)', // Efek blur
+            color: 'white', // Warna teks putih
+            borderRadius: '30px', // Border radius
+            border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+          }}>
             <AccidentDetails
               isCommandCenter={this.state.isCommandCenter}
-              />
+            />
           </Col>
-          <Col lg="4">
+          <div style={{ width: '10px' }}></div>
+          <Col style={{
+            background: 'rgba(255, 255, 255, 0.06)',
+            backdropFilter: 'blur(30px)', // Efek blur
+            color: 'white', // Warna teks putih
+            borderRadius: '30px', // Border radius
+            border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+          }}>
             <FatalityDetails
               isCommandCenter={this.state.isCommandCenter}
-              />
+            />
           </Col>
-          <Col lg="4">
+          <div style={{ width: '10px' }}></div>
+          <Col lg="4" style={{
+            background: 'rgba(255, 255, 255, 0.06)',
+            backdropFilter: 'blur(30px)', // Efek blur
+            color: 'white', // Warna teks putih
+            borderRadius: '30px', // Border radius
+            border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+          }}>
             <PotholesDescription
               isCommandCenter={this.state.isCommandCenter}
-              />
+            />
           </Col>
         </Row>
         <br></br>
