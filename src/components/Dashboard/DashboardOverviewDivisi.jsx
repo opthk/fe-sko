@@ -657,8 +657,7 @@ class DashboardOverviewDivisi extends Component {
               value={percentage.percentageDivisi.PROSENTASE_LALIN_YEARLY}
             />
           </Col>
-          <Col lg="2" md="2" style={{ marginTop: '2%' }}>
-
+          <Col lg="2" md="2" >
             <OverviewSpinner
               spinnerID={'spinner-three'}
               spinnerTitle={'Settlement'}
