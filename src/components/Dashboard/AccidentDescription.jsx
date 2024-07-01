@@ -87,7 +87,7 @@ class AccidentDescription extends Component {
       <Card style={this.state.style}>
         <CardHeader style={this.state.style}>
           <i className="fa fa-ambulance"></i> Accident Count
-          </CardHeader>
+        </CardHeader>
         <CardBody>
           <ChartTransaction
             data_set={this.state.dataSet}

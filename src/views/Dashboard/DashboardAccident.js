@@ -13,6 +13,7 @@ import FatalityDetails from '../../components/Dashboard/FatalityDetails';
 import AccidentTable from '../../components/Table/AccidentTable';
 
 
+
 class DashboardAccident extends Component {
   constructor(props) {
     super(props);
@@ -68,31 +69,30 @@ class DashboardAccident extends Component {
             background: 'rgba(255, 255, 255, 0.06)',
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
-            borderRadius: '30px', // Border radius
+            borderRadius: '10px', // Border radius
             border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
           }}>
             <AccidentDescription
               isCommandCenter={this.state.isCommandCenter}
             />
           </Col>
-          <div style={{ width: '10px' }}></div>
-          <Col style={{
+
+          <Col lg="4" style={{
             background: 'rgba(255, 255, 255, 0.06)',
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
-            borderRadius: '30px', // Border radius
+            borderRadius: '10px', // Border radius
             border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
           }}>
             <AccidentOverview
               isCommandCenter={this.state.isCommandCenter}
             />
           </Col>
-          <div style={{ width: '10px' }}></div>
           <Col lg="4" style={{
             background: 'rgba(255, 255, 255, 0.06)',
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
-            borderRadius: '30px', // Border radius
+            borderRadius: '10px', // Border radius
             border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
           }}>
             <AccidentTable
@@ -101,37 +101,38 @@ class DashboardAccident extends Component {
             />
           </Col>
         </Row>
-        <div style={{ height: '10px' }}></div>
+
+
         <Row>
           <Col lg="4" style={{
             background: 'rgba(255, 255, 255, 0.06)',
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
-            borderRadius: '30px', // Border radius
+            borderRadius: '10px', // Border radius
             border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
           }}>
             <AccidentDetails
               isCommandCenter={this.state.isCommandCenter}
             />
           </Col>
-          <div style={{ width: '10px' }}></div>
-          <Col style={{
+
+          <Col lg="4" style={{
             background: 'rgba(255, 255, 255, 0.06)',
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
-            borderRadius: '30px', // Border radius
+            borderRadius: '10px', // Border radius
             border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
           }}>
             <FatalityDetails
               isCommandCenter={this.state.isCommandCenter}
             />
           </Col>
-          <div style={{ width: '10px' }}></div>
+
           <Col lg="4" style={{
             background: 'rgba(255, 255, 255, 0.06)',
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
-            borderRadius: '30px', // Border radius
+            borderRadius: '10px', // Border radius
             border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
           }}>
             <PotholesDescription
