@@ -19,7 +19,7 @@ class AccidentTable extends Component {
   componentWillMount() {
     if (this.props.isCommandCenter) {
       this.setState({
-        style: { color: '#fff', textAlign: 'center', fontSize: '12px', backgroundColor: 'rgba(0,0,0,0.0)', border: 'none' },
+        style: { backgroundColor: 'rgba(0,0,0,0.0)', border: '1px solid rgba(255, 255, 255, 0.2)', color: '#fff', borderRadius: '20px' },
         styleHeader: { color: '#fff', backgroundColor: 'rgba(0,0,0,0.0)', textAlign: 'left', }
       });
     } else {
@@ -45,9 +45,9 @@ class AccidentTable extends Component {
     return (
       <div className="animated fadeIn">
         <Card style={this.state.style}>
-          <CardHeader style={this.state.styleHeader}>
+          <CardHeader style={{ backgroundColor: 'rgba(0,0,0,0.0)', border: 'none', color: '#fff', borderRadius: '20px' }} >
             <i className="fa fa-ambulance"></i> Last Accident
-                <DropdownMenuCommandPanel />
+            <DropdownMenuCommandPanel />
           </CardHeader>
           <CardBody>
             <Table style={this.state.style}>

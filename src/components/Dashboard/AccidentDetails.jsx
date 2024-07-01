@@ -19,7 +19,7 @@ class AccidentDetails extends Component {
   componentWillMount() {
     if (this.props.isCommandCenter) {
       this.setState({
-        style: { backgroundColor: 'rgba(0,0,0,0.0)', border: 'none', color: '#fff' }
+        style: { backgroundColor: 'rgba(0,0,0,0.0)', border: '1px solid rgba(255, 255, 255, 0.2)', color: '#fff', borderRadius: '20px' },
       });
     }
   }
@@ -89,9 +89,9 @@ class AccidentDetails extends Component {
 
     return (
       <Card style={this.state.style}>
-        <CardHeader style={this.state.style}>
+        <CardHeader style={{ backgroundColor: 'rgba(0,0,0,0.0)', border: 'none', color: '#fff', borderRadius: '20px' }}>
           <i className="fa fa-ambulance"></i> Tingkat Kecelakaan
-          </CardHeader>
+        </CardHeader>
         <CardBody>
           <ChartTransaction
             data_set={this.state.dataSet}

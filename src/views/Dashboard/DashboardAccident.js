@@ -66,34 +66,38 @@ class DashboardAccident extends Component {
       <div className="animated fadeIn">
         <Row>
           <Col lg="4" style={{
-            background: 'rgba(255, 255, 255, 0.06)',
+            // background: 'rgba(255, 255, 255, 0.02)',
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
             borderRadius: '10px', // Border radius
-            border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+            // border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+            padding: '10px'
           }}>
             <AccidentDescription
               isCommandCenter={this.state.isCommandCenter}
             />
           </Col>
-
           <Col lg="4" style={{
-            background: 'rgba(255, 255, 255, 0.06)',
+            // background: 'rgba(255, 255, 255, 0.02)',
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
             borderRadius: '10px', // Border radius
-            border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+            // border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+            padding: '10px'
+
           }}>
             <AccidentOverview
               isCommandCenter={this.state.isCommandCenter}
             />
           </Col>
           <Col lg="4" style={{
-            background: 'rgba(255, 255, 255, 0.06)',
+            // background: 'rgba(255, 255, 255, 0.02)',
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
             borderRadius: '10px', // Border radius
-            border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+            // border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+            padding: '10px'
+
           }}>
             <AccidentTable
               data={this.state.dataLastAccident}
@@ -105,11 +109,13 @@ class DashboardAccident extends Component {
 
         <Row>
           <Col lg="4" style={{
-            background: 'rgba(255, 255, 255, 0.06)',
+            // background: 'rgba(255, 255, 255, 0.02)',
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
             borderRadius: '10px', // Border radius
-            border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+            // border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+            padding: '10px'
+
           }}>
             <AccidentDetails
               isCommandCenter={this.state.isCommandCenter}
@@ -117,11 +123,13 @@ class DashboardAccident extends Component {
           </Col>
 
           <Col lg="4" style={{
-            background: 'rgba(255, 255, 255, 0.06)',
+            // background: 'rgba(255, 255, 255, 0.02)',
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
             borderRadius: '10px', // Border radius
-            border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+            // border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+            padding: '10px'
+
           }}>
             <FatalityDetails
               isCommandCenter={this.state.isCommandCenter}
@@ -129,11 +137,13 @@ class DashboardAccident extends Component {
           </Col>
 
           <Col lg="4" style={{
-            background: 'rgba(255, 255, 255, 0.06)',
+            // background: 'rgba(255, 255, 255, 0.02)',
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
             borderRadius: '10px', // Border radius
-            border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+            // border: '1px solid rgba(255, 255, 255, 0.2)', // Border semi-transparans
+            padding: '10px'
+
           }}>
             <PotholesDescription
               isCommandCenter={this.state.isCommandCenter}
