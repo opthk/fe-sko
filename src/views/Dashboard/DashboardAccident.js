@@ -66,7 +66,7 @@ class DashboardAccident extends Component {
       <div className="animated fadeIn">
         <Row>
           <Col lg="4" style={{
-            // background: 'rgba(255, 255, 255, 0.02)',
+
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
             borderRadius: '10px', // Border radius
@@ -78,7 +78,7 @@ class DashboardAccident extends Component {
             />
           </Col>
           <Col lg="4" style={{
-            // background: 'rgba(255, 255, 255, 0.02)',
+
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
             borderRadius: '10px', // Border radius
@@ -91,7 +91,7 @@ class DashboardAccident extends Component {
             />
           </Col>
           <Col lg="4" style={{
-            // background: 'rgba(255, 255, 255, 0.02)',
+
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
             borderRadius: '10px', // Border radius
@@ -109,7 +109,7 @@ class DashboardAccident extends Component {
 
         <Row>
           <Col lg="4" style={{
-            // background: 'rgba(255, 255, 255, 0.02)',
+
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
             borderRadius: '10px', // Border radius
@@ -123,7 +123,7 @@ class DashboardAccident extends Component {
           </Col>
 
           <Col lg="4" style={{
-            // background: 'rgba(255, 255, 255, 0.02)',
+
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
             borderRadius: '10px', // Border radius
@@ -137,7 +137,7 @@ class DashboardAccident extends Component {
           </Col>
 
           <Col lg="4" style={{
-            // background: 'rgba(255, 255, 255, 0.02)',
+
             backdropFilter: 'blur(30px)', // Efek blur
             color: 'white', // Warna teks putih
             borderRadius: '10px', // Border radius

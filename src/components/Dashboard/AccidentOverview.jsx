@@ -31,7 +31,7 @@ class AccidentOverview extends Component {
   componentWillMount() {
     if (this.props.isCommandCenter) {
       this.setState({
-        style: { backgroundColor: 'rgba(0,0,0,0.0)', border: '1px solid rgba(255, 255, 255, 0.2)', color: '#fff', borderRadius: '20px' }
+        style: { backgroundColor: 'rgba(0,0,0,0.1)', border: '1px solid rgba(255, 255, 255, 0.2)', color: '#fff', borderRadius: '20px' }
       });
     }
   }
