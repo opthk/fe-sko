@@ -29,6 +29,7 @@ class TransactionMonthly extends Component {
     var self = this
     var identity = JSON.parse(localStorage.getItem('identity'))
 
+
     setInterval(function () {
       self.resetDataSet()
       self.fillData()
@@ -84,9 +85,13 @@ class TransactionMonthly extends Component {
     })
 
     var thisMonth = Math.max.apply(null, longestX)
+    console.log('ini', x);
     const xCategory = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
     xCategory.splice(thisMonth - 1, 1, 'Total')
+
+    console.log('iniya', xCategory);
+
 
     return (
       <Row>
@@ -106,6 +111,7 @@ class TransactionMonthly extends Component {
             chart_height={this.props.chart_height}
             isOverviewCabang={this.props.isOverviewCabang}
             isCommandCenter={this.props.isCommandCenter}
+            max={7}
           />
         </Col>
       </Row>

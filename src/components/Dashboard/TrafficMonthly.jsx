@@ -105,6 +105,7 @@ class TrafficMonthly extends Component {
             chart_height={this.props.chart_height}
             isOverviewCabang={this.props.isOverviewCabang}
             isCommandCenter={this.props.isCommandCenter}
+            max={7}
           />
         </Col>
       </Row>

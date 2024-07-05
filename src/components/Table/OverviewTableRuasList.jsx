@@ -58,7 +58,7 @@ class OverviewTableRuasList extends Component {
                   <div>{this.props.ruas}</div>
                 </Col>
                 <Col md="4">
-                  <div style={{ color: this.props.value >= 100 ? "#06D001" : "red" }}>
+                  <div style={{ color: this.props.value >= 100 ? "#7fff7d" : "red", fontWeight: "bold" }}>
                     {parseFloat(this.props.value).toFixed(2) + " %"}
                   </div>
                 </Col>

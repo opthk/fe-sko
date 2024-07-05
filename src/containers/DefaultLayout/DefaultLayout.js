@@ -95,7 +95,7 @@ class DefaultLayout extends Component {
             left: 0,
             width: '100%',
             height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.4)' // Hitam dengan 50% kekaburan (transparansi)
+            backgroundColor: 'rgba(0, 0, 0, 0.2)' // Hitam dengan 50% kekaburan (transparansi)
           },
           headerStyle: <AppHeader hidden>
             <Suspense fallback={this.loading()}>
@@ -175,7 +175,7 @@ class DefaultLayout extends Component {
             left: 0,
             width: '100%',
             height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.4)' // Hitam dengan 50% kekaburan (transparansi)
+            backgroundColor: 'rgba(0, 0, 0, 0.2)' // Hitam dengan 50% kekaburan (transparansi)
           }
         })
       }

@@ -139,7 +139,7 @@ class DashboardTransaction extends Component {
                     isOverviewCabang={this.state.isOverviewCabang}
                     isCommandCenter={this.state.isCommandCenter}
                   />
-                  <div style={{ height: '20px' }}></div>
+                  <div style={{ height: '50px' }}></div>
                   <TransactionMonthly
                     style_group={this.state.background_group}
                     disable_title={true}
@@ -162,7 +162,7 @@ class DashboardTransaction extends Component {
                     isOverviewCabang={this.state.isOverviewCabang}
                     isCommandCenter={this.state.isCommandCenter}
                   />
-                  <div style={{ height: '20px' }}></div>
+                  <div style={{ height: '50px' }}></div>
                   <TrafficMonthly
                     style_group={this.state.background_group}
                     disable_title={true}

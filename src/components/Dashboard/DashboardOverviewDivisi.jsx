@@ -509,7 +509,7 @@ class DashboardOverviewDivisi extends Component {
       <div id="overview" className="animated fadeIn">
         <Row style={{ minHeight: '675px' }
         } >
-          <Col lg="3" md="3" style={{ marginTop: '20%' }} >
+          <Col lg="3" md="3" style={{ marginTop: '19%' }} >
 
             <OverviewTableRuasList
               ruas={uniqueRuas[0]}

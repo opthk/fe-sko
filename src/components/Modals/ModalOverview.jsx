@@ -97,8 +97,8 @@ class ModalOverview extends React.Component {
     return (
       <div>
         <Modal isOpen={this.props.modalOpen} toggle={this.props.toggle} className="modal-xl" centered>
-          <ModalHeader toggle={this.props.toggle} style={{ color: '#fff' }}>{this.props.activeRuas} Detail Achievement</ModalHeader>
-          <ModalBody>
+          <ModalHeader toggle={this.props.toggle} style={{ color: '#fff', background: 'rgba(0, 0, 0, 0.3)' }}>{this.props.activeRuas} Detail Achievement</ModalHeader>
+          <ModalBody style={{ background: 'rgba(0, 0, 0, 0.3)' }}>
             <Row>
               <Col lg="6">
                 <Row>
@@ -207,7 +207,7 @@ class ModalOverview extends React.Component {
                   <Col>
                     <Rtms
                       data={rtms}
-                      branch = {this.props.activeRuas}
+                      branch={this.props.activeRuas}
                     />
                   </Col>
                 </Row>

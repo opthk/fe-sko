@@ -87,8 +87,8 @@ class TransactionDaily extends Component {
       max = this.props.max - 1
     }
     const chartOption = {
-      colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
-      '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee',],
+      colors: ['#6bfa96', '#fce172', '#fc7780', '#7798BF', '#aaeeee', '#ff0066',
+        '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee',],
       chart: {
         backgroundColor: this.props.style_group,
         style: {
@@ -165,7 +165,10 @@ class TransactionDaily extends Component {
           },
           animation: {
             duration: 1500
-          }
+          },
+          borderRadius: '20px',
+          borderWidth: 0.4,     // Mengatur lebar border pada setiap bar
+          borderColor: '#ffffff' // Mengatur warna border pada setiap bar
         }
       },
       legend: this.state.legend,
