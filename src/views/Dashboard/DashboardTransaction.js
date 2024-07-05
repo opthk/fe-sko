@@ -98,7 +98,7 @@ class DashboardTransaction extends Component {
   render() {
     let ket
     if (this.state.defaultRenderValue === 0) {
-      ket = 'Data by Profit Sharing'
+      ket = ''
     } else {
       ket = 'Data by End Of Journal'
     }
