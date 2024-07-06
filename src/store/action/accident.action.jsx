@@ -219,7 +219,7 @@ function getAccidentRate(id_ruas) {
   return dispatch => {
     axios.get(config.HK_DASHBOARD_GLOBAL_API + '/accident/rate/' + id_ruas, { headers: { 'x-access-token': token } })
       .then(response => {
-        console.log('tesss');
+        console.log('accidentrate');
         console.log(response);
         let accident = []
         accident['count'] = []

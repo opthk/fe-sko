@@ -288,6 +288,8 @@ function getSettlementKoran(id_branch) {
   return dispatch => {
     axios.get(config.HK_DASHBOARD_GLOBAL_API + '/getSettlementKoran/' + id_branch, { headers: { 'x-access-token': token } })
       .then(response => {
+        console.log('settlement koran', response);
+
         var settlement = response.data.data
         var bankPercentage = []
         var rekeningBulananAllruas = []
@@ -425,6 +427,7 @@ function getBagiHasil(branch_code) {
   return dispatch => {
     axios.get(config.HK_DASHBOARD_GLOBAL_API + '/getRealisasiBagiHasil', { headers: { 'x-access-token': token } })
       .then(response => {
+        console.log('bagi hasil', response);
         const realisasiBagiHasil = response.data.data
         dispatch(storeDataRuas(realisasiBagiHasil));
       })

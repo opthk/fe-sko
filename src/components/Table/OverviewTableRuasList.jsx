@@ -49,7 +49,7 @@ class OverviewTableRuasList extends Component {
                 WebkitBackdropFilter: "blur(10px)", // Efek kaca untuk Safari
                 border: "1px solid rgba(255, 255, 255, 0.2)", // Border semi-transparans
                 padding: "3px",
-                margin: "10px",
+                margin: "5px",
               }}
               onClick={() => this.props.toggle(this.props.ruas, this.props.value)}
             >
