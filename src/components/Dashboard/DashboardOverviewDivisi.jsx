@@ -91,7 +91,7 @@ class DashboardOverviewDivisi extends Component {
     var permai = []
     var binsa = []
     var bengtaba = []
-    var bangpang = []
+    var pekbang = []
     var inpra = []
     var inkis = []
     var divisionPercent = 0 + '%'
@@ -163,14 +163,14 @@ class DashboardOverviewDivisi extends Component {
     bengtaba['potholes'] = 0
     bengtaba['rawpercentage'] = []
     bengtaba['percentage'] = 'loading'
-    bangpang['lalin'] = 0
-    bangpang['transaksi'] = 0
-    bangpang['settlement'] = []
-    bangpang['rekeningKoran'] = []
-    bangpang['safety'] = 0
-    bangpang['potholes'] = 0
-    bangpang['rawpercentage'] = []
-    bangpang['percentage'] = 'loading'
+    pekbang['lalin'] = 0
+    pekbang['transaksi'] = 0
+    pekbang['settlement'] = []
+    pekbang['rekeningKoran'] = []
+    pekbang['safety'] = 0
+    pekbang['potholes'] = 0
+    pekbang['rawpercentage'] = []
+    pekbang['percentage'] = 'loading'
     inpra['lalin'] = 0
     inpra['transaksi'] = 0
     inpra['settlement'] = []
@@ -239,9 +239,9 @@ class DashboardOverviewDivisi extends Component {
               bengtaba['rawpercentage'].push(val2.TRANSACTION_YEARLY_PERCENTAGE)
               bengtaba['rawpercentage'].push(val2.TRAFFIC_YEARLY_PERCENTAGE)
             }
-            else if (val2.RUAS_CODE === 'BANGPANG') {
-              bangpang['rawpercentage'].push(val2.TRANSACTION_YEARLY_PERCENTAGE)
-              bangpang['rawpercentage'].push(val2.TRAFFIC_YEARLY_PERCENTAGE)
+            else if (val2.RUAS_CODE === 'PEKBANG') {
+              pekbang['rawpercentage'].push(val2.TRANSACTION_YEARLY_PERCENTAGE)
+              pekbang['rawpercentage'].push(val2.TRAFFIC_YEARLY_PERCENTAGE)
             }
             else if (val2.RUAS_CODE === 'INPRA') {
               inpra['rawpercentage'].push(val2.TRANSACTION_YEARLY_PERCENTAGE)
@@ -274,8 +274,8 @@ class DashboardOverviewDivisi extends Component {
           binsa['settlement'].push(val2)
         } else if (val1.ruas_code === 'BENGTABA') {
           bengtaba['settlement'].push(val2)
-        } else if (val1.ruas_code === 'BANGPANG') {
-          bangpang['settlement'].push(val2)
+        } else if (val1.ruas_code === 'PEKBANG') {
+          pekbang['settlement'].push(val2)
         } else if (val1.ruas_code === 'INPRA') {
           inpra['settlement'].push(val2)
         } else if (val1.ruas_code === 'INKIS') {
@@ -300,8 +300,8 @@ class DashboardOverviewDivisi extends Component {
           binsa['rekeningKoran'].push(val3)
         } else if (val1.ruas_code === 'BENGTABA') {
           bengtaba['rekeningKoran'].push(val3)
-        } else if (val1.ruas_code === 'BANGPANG') {
-          bangpang['rekeningKoran'].push(val3)
+        } else if (val1.ruas_code === 'PEKBANG') {
+          pekbang['rekeningKoran'].push(val3)
         } else if (val1.ruas_code === 'INPRA') {
           inpra['rekeningKoran'].push(val3)
         } else if (val1.ruas_code === 'INKIS') {
@@ -319,7 +319,7 @@ class DashboardOverviewDivisi extends Component {
     palindra['settlement'] = palindra['settlement'].reduce((a, b) => a + b, 0)
     binsa['settlement'] = binsa['settlement'].reduce((a, b) => a + b, 0)
     bengtaba['settlement'] = bengtaba['settlement'].reduce((a, b) => a + b, 0)
-    bangpang['settlement'] = bangpang['settlement'].reduce((a, b) => a + b, 0)
+    pekbang['settlement'] = pekbang['settlement'].reduce((a, b) => a + b, 0)
     inpra['settlement'] = inpra['settlement'].reduce((a, b) => a + b, 0)
     inkis['settlement'] = inkis['settlement'].reduce((a, b) => a + b, 0)
 
@@ -333,7 +333,7 @@ class DashboardOverviewDivisi extends Component {
     palindra['rekeningKoran'] = palindra['rekeningKoran'].reduce((a, b) => a + b, 0)
     binsa['rekeningKoran'] = binsa['rekeningKoran'].reduce((a, b) => a + b, 0)
     bengtaba['rekeningKoran'] = bengtaba['rekeningKoran'].reduce((a, b) => a + b, 0)
-    bangpang['rekeningKoran'] = bangpang['rekeningKoran'].reduce((a, b) => a + b, 0)
+    pekbang['rekeningKoran'] = pekbang['rekeningKoran'].reduce((a, b) => a + b, 0)
     inpra['rekeningKoran'] = inpra['rekeningKoran'].reduce((a, b) => a + b, 0)
     inkis['rekeningKoran'] = inkis['rekeningKoran'].reduce((a, b) => a + b, 0)
 
@@ -347,7 +347,7 @@ class DashboardOverviewDivisi extends Component {
     palindra['rawpercentage'].push(palindra['rekeningKoran'] / palindra['settlement'] * 100)
     binsa['rawpercentage'].push(binsa['rekeningKoran'] / binsa['settlement'] * 100)
     bengtaba['rawpercentage'].push(bengtaba['rekeningKoran'] / bengtaba['settlement'] * 100)
-    bangpang['rawpercentage'].push(bangpang['rekeningKoran'] / bangpang['settlement'] * 100)
+    pekbang['rawpercentage'].push(pekbang['rekeningKoran'] / pekbang['settlement'] * 100)
     inpra['rawpercentage'].push(inpra['rekeningKoran'] / inpra['settlement'] * 100)
     inkis['rawpercentage'].push(inkis['rekeningKoran'] / inkis['settlement'] * 100)
 
@@ -373,8 +373,8 @@ class DashboardOverviewDivisi extends Component {
         binsa['safety'] = 100 - (val.T_KECELAKAAN * val.SECTION_LENGTH / Math.pow(10, 8))
       } else if (val.RUAS_CODE === 'BENGTABA') {
         bengtaba['safety'] = 100 - (val.T_KECELAKAAN * val.SECTION_LENGTH / Math.pow(10, 8))
-      } else if (val.RUAS_CODE === 'BANGPANG') {
-        bangpang['safety'] = 100 - (val.T_KECELAKAAN * val.SECTION_LENGTH / Math.pow(10, 8))
+      } else if (val.RUAS_CODE === 'PEKBANG') {
+        pekbang['safety'] = 100 - (val.T_KECELAKAAN * val.SECTION_LENGTH / Math.pow(10, 8))
       } else if (val.RUAS_CODE === 'INPRA') {
         inpra['safety'] = 100 - (val.T_KECELAKAAN * val.SECTION_LENGTH / Math.pow(10, 8))
       } else if (val.RUAS_CODE === 'INKIS') {
@@ -391,7 +391,7 @@ class DashboardOverviewDivisi extends Component {
     palindra['rawpercentage'].push(palindra['safety'])
     binsa['rawpercentage'].push(binsa['safety'])
     bengtaba['rawpercentage'].push(bengtaba['safety'])
-    bangpang['rawpercentage'].push(bangpang['safety'])
+    pekbang['rawpercentage'].push(pekbang['safety'])
     inpra['rawpercentage'].push(inpra['safety'])
     inkis['rawpercentage'].push(inkis['safety'])
 
@@ -451,11 +451,11 @@ class DashboardOverviewDivisi extends Component {
         } else {
           bengtaba['potholes'] = 100 - (val.NOT_HANDLING / val.TOTAL_POTHOLES * 100)
         }
-      } else if (val.RUAS_CODE === 'BANGPANG') {
+      } else if (val.RUAS_CODE === 'PEKBANG') {
         if (isNaN(val.NOT_HANDLING / val.TOTAL_POTHOLES * 100)) {
-          bangpang['potholes'] = 100
+          pekbang['potholes'] = 100
         } else {
-          bangpang['potholes'] = 100 - (val.NOT_HANDLING / val.TOTAL_POTHOLES * 100)
+          pekbang['potholes'] = 100 - (val.NOT_HANDLING / val.TOTAL_POTHOLES * 100)
         }
       } else if (val.RUAS_CODE === 'INPRA') {
         if (isNaN(val.NOT_HANDLING / val.TOTAL_POTHOLES * 100)) {
@@ -482,7 +482,7 @@ class DashboardOverviewDivisi extends Component {
     palindra['rawpercentage'].push(palindra['potholes'])
     binsa['rawpercentage'].push(binsa['potholes'])
     bengtaba['rawpercentage'].push(bengtaba['potholes'])
-    bangpang['rawpercentage'].push(bangpang['potholes'])
+    pekbang['rawpercentage'].push(pekbang['potholes'])
     inpra['rawpercentage'].push(inpra['potholes'])
     inkis['rawpercentage'].push(inkis['potholes'])
 
@@ -524,9 +524,9 @@ class DashboardOverviewDivisi extends Component {
       sumPercentage = bengtaba['rawpercentage'].reduce((a, b) => a + b, 0)
       bengtaba['percentage'] = (sumPercentage / bengtaba['rawpercentage'].length).toFixed(2)
     }
-    if (bangpang['rawpercentage'].length === 5) {
-      sumPercentage = bangpang['rawpercentage'].reduce((a, b) => a + b, 0)
-      bangpang['percentage'] = (sumPercentage / bangpang['rawpercentage'].length).toFixed(2)
+    if (pekbang['rawpercentage'].length === 5) {
+      sumPercentage = pekbang['rawpercentage'].reduce((a, b) => a + b, 0)
+      pekbang['percentage'] = (sumPercentage / pekbang['rawpercentage'].length).toFixed(2)
     }
     if (inpra['rawpercentage'].length === 5) {
       sumPercentage = inpra['rawpercentage'].reduce((a, b) => a + b, 0)
@@ -641,8 +641,8 @@ class DashboardOverviewDivisi extends Component {
                   toggle={this.toggle}
                 />
                 <OverviewTableRuasList
-                  ruas={'BANGPANG'}
-                  value={bangpang['percentage']}
+                  ruas={'PEKBANG'}
+                  value={pekbang['percentage']}
                   style={{ color: '#fffF' }}
                   width1={{ width: '40%', letterSpacing: '2px' }}
                   width2={{ width: '60%', letterSpacing: '2px' }}
