@@ -548,7 +548,7 @@ class DashboardOverviewDivisi extends Component {
           <Col lg="3" md="3" style={{ marginTop: '15%' }} >
 
             <OverviewTableRuasList
-              ruas={uniqueRuas[0]}
+              ruas={'JORR-S'}
               value={atp['percentage']}
               style={{ color: '#fffF' }}
               width1={{ width: '55%' }}
@@ -580,7 +580,7 @@ class DashboardOverviewDivisi extends Component {
               toggle={this.toggle}
             />
             <OverviewTableRuasList
-              ruas={uniqueRuas[2]}
+              ruas={'PALINDRA'}
               value={jorrs['percentage']}
               style={{ color: '#fffF' }}
               width1={{ width: '55%' }}
@@ -633,7 +633,7 @@ class DashboardOverviewDivisi extends Component {
                   toggle={this.toggle}
                 />
                 <OverviewTableRuasList
-                  ruas={uniqueRuas[4]}
+                  ruas={'ATP'}
                   value={palindra['percentage']}
                   style={{ color: '#fffF' }}
                   width1={{ width: '40%', letterSpacing: '2px' }}
