@@ -62,6 +62,8 @@ class TransactionMonthly extends Component {
     this.setState({
       dataSet: this.state.dataRaw
     });
+
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -89,8 +91,8 @@ class TransactionMonthly extends Component {
     const xCategory = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
     xCategory.splice(thisMonth - 1, 1, 'Total')
+    console.log('ini dataset,', this.state.dataSet);
 
-    console.log('iniya', xCategory);
 
 
     return (

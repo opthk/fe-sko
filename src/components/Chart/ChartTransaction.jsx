@@ -28,7 +28,19 @@ class TransactionDaily extends Component {
       },
       x_title: '',
       y_title: '',
-      legend: false,
+      legend: {
+        enabled: true,
+
+        itemStyle: {
+          color: '#E0E0E3'
+        },
+        itemHoverStyle: {
+          color: '#FFF'
+        },
+        itemHiddenStyle: {
+          color: '#606063'
+        }
+      },
       fontColor: {
         color: '#fff'
       }
@@ -39,6 +51,7 @@ class TransactionDaily extends Component {
     if (this.props.isOverviewCabang) {
       this.setState({
         legend: {
+          enabled: true,
           itemStyle: {
             color: '#E0E0E3'
           },
@@ -87,8 +100,10 @@ class TransactionDaily extends Component {
       max = this.props.max - 1
     }
     const chartOption = {
-      colors: ['#6bfa96', '#fce172', '#fc7780', '#7798BF', '#aaeeee', '#ff0066',
-        '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee',],
+      colors:
+        this.props.is_modal === true ? ['#fce172', '#6bfa96'] :
+          ['#6bfa96', '#fce172', '#fc7780', '#7798BF', '#aaeeee', '#ff0066',
+            '#eeaaee', '#55BF3B', '#DF5353', '#e28743', '#2596be',],
       chart: {
         backgroundColor: this.props.style_group,
         style: {
@@ -97,6 +112,7 @@ class TransactionDaily extends Component {
         plotBorderColor: '#606063',
         type: this.props.chart_type,
         height: this.props.chart_height,
+
       },
       credits: {
         enabled: false
@@ -159,9 +175,22 @@ class TransactionDaily extends Component {
       },
       plotOptions: {
         series: {
+          events: {
+            legendItemClick: function (e) {
+              console.log(e);
+            },
+
+          },
           dataLabels: {
             enabled: this.props.data_label,
-            inside: false,
+            inside: this.props.is_modal === true ? true : false,
+            rotation: this.props.is_modal === true ? -90 : 0, // Rotasi label
+            align: 'center', // Menempatkan label di tengah secara horizontal
+            verticalAlign: 'middle', // Menempatkan label di tengah secara vertikal
+            style: {
+              color: '#FFFFFF', // Warna teks label
+              fontSize: '10px' // Ukuran teks
+            }
           },
           animation: {
             duration: 1500
@@ -186,7 +215,11 @@ class TransactionDaily extends Component {
           }
         }]
       },
-      series: this.props.data_set
+      series: this.props.data_set.map((series, index) => ({
+        ...series,
+        showInLegend: true,
+        visible: series.name === 'ATP' || series.name === 'JORR-S' || series.name === 'TERPEKA' || series.name === 'PERMAI' || series.name === 'PEKBANG' ? false : true
+      }))
     }
 
     return (

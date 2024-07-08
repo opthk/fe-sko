@@ -114,6 +114,8 @@ class ModalOverview extends React.Component {
                       style_group={'rgba(0,0,0,0.0)'}
                       height={'300'}
                       align={'center'}
+                      data_label={true}
+                      is_modal={true}
                       isCommandCenter={this.props.isCommandCenter}
                     />
                   </Col>

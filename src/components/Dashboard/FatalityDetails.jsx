@@ -58,7 +58,7 @@ class FatalityDetails extends Component {
     if (this.props.accidentCount !== nextProps.accidentCount) {
 
       let dataSet = [{
-        name: 'Tingkat Fatalitas',
+        name: 'Persentase Tingkat Fatalitas',
         data: []
       }]
       nextProps.accidentCount.forEach((val, index) => {
