@@ -21,7 +21,7 @@ class TrafficDaily extends Component {
       styleGroup: '',
       height: 275,
       dataLabel: false,
-      align:'center'
+      align: 'center'
     };
   }
 

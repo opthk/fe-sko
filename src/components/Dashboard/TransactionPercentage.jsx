@@ -73,6 +73,7 @@ class TransactionPercentage extends Component {
 
   render() {
     return (
+
       <Card style={this.state.style}>
         {/* <CardHeader style={{ color: '#fff', backgroundColor: 'rgba(0,0,0,0.0)', fontSize: '18px' }}>
           <i className="fa fa-exchange"></i> <b>Transaction Overview</b>

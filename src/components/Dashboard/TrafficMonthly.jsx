@@ -87,6 +87,7 @@ class TrafficMonthly extends Component {
 
     xCategory.splice(thisMonth - 1, 1, 'Total')
 
+
     return (
       <Row>
         <Col>
@@ -105,7 +106,7 @@ class TrafficMonthly extends Component {
             chart_height={this.props.chart_height}
             isOverviewCabang={this.props.isOverviewCabang}
             isCommandCenter={this.props.isCommandCenter}
-            max={7}
+            max={longestX.length}
           />
         </Col>
       </Row>

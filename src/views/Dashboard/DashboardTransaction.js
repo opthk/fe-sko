@@ -76,7 +76,7 @@ class DashboardTransaction extends Component {
         dispatch(dashboardAction.getPercentageTransactionTrafficByRealisasi(identity.branch_code));
         dispatch(dashboardAction.getPercentageTransactionTrafficDailyByRealisasi(identity.branch_code));
         dispatch(dashboardAction.getPercentageTransactionTrafficMonthlyByRealisasi(identity.branch_code));
-      }, 1500 * 1000);
+      }, 12000 * 1000);
     } else {
       dispatch(dashboardAction.getPercentageTransactionTrafficByEoj(identity.branch_code));
       dispatch(dashboardAction.getPercentageTransactionTrafficDailyByEoj(identity.branch_code));
