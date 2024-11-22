@@ -106,7 +106,7 @@ class DashboardTransaction extends Component {
       <div className="animated fadeIn">
         <Card style={this.state.style}>
           <CardHeader style={this.state.style}>
-            <i className="fa fa-exchange"></i> <b>Transaction Overview </b> <small>{ket}</small>
+            <i className="fa fa-exchange"></i> <b>Transaction Overview -</b> <small>{ket}</small>
             <DropdownMenuCommandPanel />
             <DropdownMenuSwitchData
               switch_data={this.switchData}
