@@ -80,21 +80,23 @@ class TransactionMonthly extends Component {
   }
 
   render() {
-    var x = this.state.dataSet
-    var longestX = []
+    var x = this.state.dataSet;
+    var longestX = [];
     x.forEach((val1) => {
-      longestX.push(val1.data.length)
-    })
+      longestX.push(val1.data.length);
+    });
 
-    var thisMonth = Math.max.apply(null, longestX)
-    console.log('ini', x);
-    const xCategory = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    // Menentukan bulan terakhir berdasarkan data
+    var thisMonth = Math.max.apply(null, longestX);
+    const xCategory = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    xCategory.splice(thisMonth - 1, 1, 'Total')
+    // Ganti bulan terakhir dengan "Total" dan hapus bulan setelahnya
+    xCategory.splice(thisMonth, xCategory.length - thisMonth); // Menghapus bulan setelah thisMonth
+    xCategory[thisMonth - 1] = 'Total'; // Ganti bulan terakhir dengan 'Total'
+
     console.log('ini dataset,', this.state.dataSet);
-
-
-
+    console.log('ini xCategory', xCategory);
+    console.log('ini longestX', longestX);
     return (
       <Row>
         <Col>
@@ -113,7 +115,7 @@ class TransactionMonthly extends Component {
             chart_height={this.props.chart_height}
             isOverviewCabang={this.props.isOverviewCabang}
             isCommandCenter={this.props.isCommandCenter}
-            max={longestX.length}
+            max={thisMonth}
           />
         </Col>
       </Row>

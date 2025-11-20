@@ -31,16 +31,18 @@ class AccidentTable extends Component {
   }
 
   render() {
-    var table = this.props.data.map((val, index) => {
-      return (
-        <tr key={index}>
-          <td>{val.ruas}</td>
-          <td>{val.event_time}</td>
-          <td>{val.lokasi}</td>
-          <td>{val.type}</td>
-        </tr>
-      )
-    })
+    var table = this.props.data
+      .filter(val => val.ruas !== "MEBI" && val.ruas !== "BAKTER")
+      .map((val, index) => {
+        return (
+          <tr key={index}>
+            <td>{val.ruas}</td>
+            <td>{val.event_time}</td>
+            <td>{val.lokasi}</td>
+            <td>{val.type}</td>
+          </tr>
+        )
+      })
 
     return (
       <div className="animated fadeIn">

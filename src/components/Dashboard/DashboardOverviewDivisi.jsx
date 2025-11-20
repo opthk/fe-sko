@@ -103,7 +103,7 @@ class DashboardOverviewDivisi extends Component {
     jorrs['transaksi'] = 0
     jorrs['settlement'] = []
     jorrs['rekeningKoran'] = []
-    jorrs['safety'] = 0
+    jorrs['safety'] = 100
     jorrs['potholes'] = 0
     jorrs['rawpercentage'] = []
     jorrs['percentage'] = 'loading'
@@ -111,7 +111,7 @@ class DashboardOverviewDivisi extends Component {
     atp['transaksi'] = 0
     atp['settlement'] = []
     atp['rekeningKoran'] = []
-    atp['safety'] = 0
+    atp['safety'] = 100
     atp['potholes'] = 0
     atp['rawpercentage'] = []
     atp['percentage'] = 'loading'
@@ -119,7 +119,7 @@ class DashboardOverviewDivisi extends Component {
     palindra['transaksi'] = 0
     palindra['settlement'] = []
     palindra['rekeningKoran'] = []
-    palindra['safety'] = 0
+    palindra['safety'] = 100
     palindra['potholes'] = 0
     palindra['rawpercentage'] = []
     palindra['percentage'] = 'loading'
@@ -127,7 +127,7 @@ class DashboardOverviewDivisi extends Component {
     terpeka['transaksi'] = 0
     terpeka['settlement'] = []
     terpeka['rekeningKoran'] = []
-    terpeka['safety'] = 0
+    terpeka['safety'] = 100
     terpeka['potholes'] = 0
     terpeka['rawpercentage'] = []
     terpeka['percentage'] = 'loading'
@@ -135,7 +135,7 @@ class DashboardOverviewDivisi extends Component {
     sibanceh['transaksi'] = 0
     sibanceh['settlement'] = []
     sibanceh['rekeningKoran'] = []
-    sibanceh['safety'] = 0
+    sibanceh['safety'] = 100
     sibanceh['potholes'] = 0
     sibanceh['rawpercentage'] = []
     sibanceh['percentage'] = 'loading'
@@ -143,7 +143,7 @@ class DashboardOverviewDivisi extends Component {
     permai['transaksi'] = 0
     permai['settlement'] = []
     permai['rekeningKoran'] = []
-    permai['safety'] = 0
+    permai['safety'] = 100
     permai['potholes'] = 0
     permai['rawpercentage'] = []
     permai['percentage'] = 'loading'
@@ -151,7 +151,7 @@ class DashboardOverviewDivisi extends Component {
     binsa['transaksi'] = 0
     binsa['settlement'] = []
     binsa['rekeningKoran'] = []
-    binsa['safety'] = 0
+    binsa['safety'] = 100
     binsa['potholes'] = 0
     binsa['rawpercentage'] = []
     binsa['percentage'] = 'loading'
@@ -159,7 +159,7 @@ class DashboardOverviewDivisi extends Component {
     bengtaba['transaksi'] = 0
     bengtaba['settlement'] = []
     bengtaba['rekeningKoran'] = []
-    bengtaba['safety'] = 0
+    bengtaba['safety'] = 100
     bengtaba['potholes'] = 0
     bengtaba['rawpercentage'] = []
     bengtaba['percentage'] = 'loading'
@@ -167,7 +167,7 @@ class DashboardOverviewDivisi extends Component {
     pekbang['transaksi'] = 0
     pekbang['settlement'] = []
     pekbang['rekeningKoran'] = []
-    pekbang['safety'] = 0
+    pekbang['safety'] = 100
     pekbang['potholes'] = 0
     pekbang['rawpercentage'] = []
     pekbang['percentage'] = 'loading'
@@ -175,7 +175,7 @@ class DashboardOverviewDivisi extends Component {
     inpra['transaksi'] = 0
     inpra['settlement'] = []
     inpra['rekeningKoran'] = []
-    inpra['safety'] = 0
+    inpra['safety'] = 100
     inpra['potholes'] = 0
     inpra['rawpercentage'] = []
     inpra['percentage'] = 'loading'
@@ -183,7 +183,7 @@ class DashboardOverviewDivisi extends Component {
     inkis['transaksi'] = 0
     inkis['settlement'] = []
     inkis['rekeningKoran'] = []
-    inkis['safety'] = 0
+    inkis['safety'] = 100
     inkis['potholes'] = 0
     inkis['rawpercentage'] = []
     inkis['percentage'] = 'loading'

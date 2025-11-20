@@ -62,15 +62,17 @@ class PotholesDescription extends Component {
         name: 'Potholes Handling Percentage',
         data: []
       }]
-      nextProps.potholes.forEach((val, index) => {
-        let a = 0
-        if (val.NOT_HANDLING === 0) {
-          a = 100
-        } else {
-          a = 100 - (val.NOT_HANDLING / val.TOTAL_POTHOLES * 100)
-        }
-        dataSet[0]['data'].push(parseFloat(a.toFixed(2)))
-      })
+      nextProps.potholes
+        .filter(val => val.RUAS_CODE !== 'MEBI' && val.RUAS_CODE !== 'BAKTER')
+        .forEach((val) => {
+          let a = 0
+          if (val.NOT_HANDLING === 0) {
+            a = 100
+          } else {
+            a = 100 - (val.NOT_HANDLING / val.TOTAL_POTHOLES * 100)
+          }
+          dataSet[0]['data'].push(parseFloat(a.toFixed(2)))
+        })
       this.resetDataSet()
       setTimeout(function () {
         self.setState({
@@ -84,9 +86,11 @@ class PotholesDescription extends Component {
   render() {
     let xCategory = []
     const { potholes } = this.props
-    potholes.forEach((val, index) => {
-      xCategory.push(val.RUAS_CODE)
-    })
+    potholes
+      .filter(val => val.RUAS_CODE !== 'MEBI' && val.RUAS_CODE !== 'BAKTER')
+      .forEach((val) => {
+        xCategory.push(val.RUAS_CODE)
+      })
     return (
       <Card style={this.state.style}>
         <CardHeader style={{ backgroundColor: 'rgba(0,0,0,0.0)', border: 'none', color: '#fff', borderRadius: '20px' }}>

@@ -62,14 +62,16 @@ class AccidentDetails extends Component {
         name: 'Persentase Jumlah Kecelakaan',
         data: []
       }]
-      nextProps.accidentCount.forEach((val, index) => {
-        let a = 0
-        if (!val.T_KECELAKAAN) {
-          val.T_KECELAKAAN = 0
-        }
-        a = parseFloat(val.T_KECELAKAAN).toFixed(2)
-        dataSet[0]['data'].push(parseFloat(a))
-      })
+      nextProps.accidentCount
+        .filter(val => val.RUAS_CODE !== 'MEBI' && val.RUAS_CODE !== 'BAKTER')
+        .forEach((val) => {
+          let a = 0
+          if (!val.T_KECELAKAAN) {
+            val.T_KECELAKAAN = 0
+          }
+          a = parseFloat(val.T_KECELAKAAN).toFixed(2)
+          dataSet[0]['data'].push(parseFloat(a))
+        })
       this.resetDataSet()
       setTimeout(function () {
         self.setState({
@@ -83,9 +85,11 @@ class AccidentDetails extends Component {
   render() {
     let xCategory = []
     const { accidentCount } = this.props
-    accidentCount.forEach((val, index) => {
-      xCategory.push(val.RUAS_CODE)
-    })
+    accidentCount
+      .filter(val => val.RUAS_CODE !== 'MEBI' && val.RUAS_CODE !== 'BAKTER')
+      .forEach((val) => {
+        xCategory.push(val.RUAS_CODE)
+      })
 
     return (
       <Card style={this.state.style}>

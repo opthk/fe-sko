@@ -66,9 +66,11 @@ class AccidentDescription extends Component {
         name: 'Jumlah Kecelakaan',
         data: []
       }]
-      nextProps.accidentCount.ruasAccident.forEach((val, index) => {
-        dataSet[0]['data'].push(val.jumlah)
-      })
+      nextProps.accidentCount.ruasAccident
+        .filter(val => val.ruas !== 'MEBI' && val.ruas !== 'BAKTER')
+        .forEach((val, index) => {
+          dataSet[0]['data'].push(val.jumlah)
+        })
       this.resetDataSet()
       setTimeout(function () {
         self.setState({
@@ -82,9 +84,11 @@ class AccidentDescription extends Component {
   render() {
     let xCategory = []
     const { accidentCount } = this.props
-    accidentCount.ruasAccident.forEach((val, index) => {
-      xCategory.push(val.ruas)
-    })
+    accidentCount.ruasAccident
+      .filter(val => val.ruas !== 'MEBI' && val.ruas !== 'BAKTER')
+      .forEach((val) => {
+        xCategory.push(val.ruas)
+      })
     return (
       <Card style={this.state.style}>
         <CardHeader style={{ backgroundColor: 'rgba(0,0,0,0.0)', border: 'none', color: '#fff' }}>
