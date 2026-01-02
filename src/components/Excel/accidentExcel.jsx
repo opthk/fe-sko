@@ -16,10 +16,11 @@ class DownloadDataAccident extends React.Component {
           <ExcelColumn label="Time" value="TIME" />
           <ExcelColumn label="STA" value="STA" />
           <ExcelColumn label="LANE" value="LANE" />
+          <ExcelColumn label="Posisi Kecelakaan" value="POSITION_NAME" />
+          <ExcelColumn label="Nomor Kendaraan" value="VEHICLE_IDENTIFICATION" />
           <ExcelColumn label="Light Injury" value="LIGHT_INJURY" />
           <ExcelColumn label="Heavy Injury" value="HEAVY_INJURY" />
           <ExcelColumn label="Fatality" value="FATALITY" />
-          <ExcelColumn label="Posisi Kecelakaan" value="POSITION_NAME" />
           <ExcelColumn label="Cuaca Kecelakaan" value="WEATHER_NAME" />
           <ExcelColumn label="Jenis Kecelakaan" value="ACCIDENT_TYPE" />
           <ExcelColumn label="Penyebab Kecelakaan" value="ACCIDENT_CAUSE" />
