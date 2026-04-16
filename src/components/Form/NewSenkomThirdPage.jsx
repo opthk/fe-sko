@@ -14,6 +14,7 @@ const NewSenkomThirdPage = props => {
 
   const { handleSubmit, previousPage, vehicleAssistance, disabled } = props;
 
+
   const renderFieldVehicleAsisstance = ({ input, meta: { touched, error } }) => (
     <FormGroup>
       <Label for="vehicleUnit">Unit Bantuan</Label>
@@ -49,7 +50,7 @@ const NewSenkomThirdPage = props => {
         <Col>
           <Button type="button" onClick={() => fields.push({})} title="Tambah Bantuan" color="success" className="float-right" style={{ marginTop: '-30px' }} disabled={disabled}>
             <i className="fa fa-plus"></i> Tambah Bantuan
-        </Button>
+          </Button>
           {(touched || submitFailed) && error && <span>{error}</span>}
         </Col>
       </Row >
@@ -125,6 +126,7 @@ const NewSenkomThirdPage = props => {
                 disabled={disabled}
               />
             </Col>
+
           </Row>
           <Row>
             <Col md="2">

@@ -42,7 +42,7 @@ let NewSenkomFirstPage = props => {
   const renderFieldGangguan = ({ input, meta: { touched, error } }) => (
     <div>
       <select {...input} className="form-control input-sm" disabled={disabled}>
-        <option value="">-- Pilih Gangguan --</option>
+        <option value="">--- Pilih Gangguan ---</option>
         {interference.map((val, index) => {
           return (
             <option value={val.ID_INTERFERENCE} key={index}>
@@ -52,6 +52,22 @@ let NewSenkomFirstPage = props => {
         })}
       </select>
       {touched && error && <span style={{ color: '#eb1e24' }}><i className="fa fa-exclamation-triangle"></i> {error}</span>}
+    </div>
+  );
+
+
+  const renderFieldODOL = ({ input, meta: { touched, error } }) => (
+    <div>
+      <select {...input} className="form-control input-sm">
+        <option value="">Pilih</option>
+        <option value="1">Ya</option>
+        <option value="0">Tidak</option>
+      </select>
+      {touched && error && (
+        <span style={{ color: '#eb1e24' }}>
+          <i className="fa fa-exclamation-triangle"></i> {error}
+        </span>
+      )}
     </div>
   );
 
@@ -93,6 +109,7 @@ let NewSenkomFirstPage = props => {
         <Col md="2">
           <label><b>Gangguan</b></label>
         </Col>
+
         <Col md="4">
           <Field
             name="created_by"
@@ -107,6 +124,17 @@ let NewSenkomFirstPage = props => {
           <Field
             name="id_interference"
             component={renderFieldGangguan}
+          />
+        </Col>
+
+        <Col md="2">
+          <label><b>ODOL</b></label>
+        </Col>
+
+        <Col md="2">
+          <Field
+            name="is_odol"
+            component={renderFieldODOL}
           />
         </Col>
       </Row>

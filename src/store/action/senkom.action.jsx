@@ -219,6 +219,7 @@ function getDataSenkom(id_senkom) {
           senkom.detail['chronology'] = rawsenkom.kecelakaan['CHRONOLOGY']
           senkom.detail['reporter_name'] = rawsenkom.detail['REPORTER_NAME']
           senkom.detail['information'] = rawsenkom.detail['INFORMATION']
+          senkom.detail['is_odol'] = rawsenkom.detail['IS_ODOL']
           senkom.detail['vehicle_assistance'] = []
           rawsenkom.bantuan.forEach((val, index) => {
             senkom.detail['vehicle_assistance'][index] = {}

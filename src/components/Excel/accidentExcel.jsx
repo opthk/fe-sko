@@ -15,6 +15,8 @@ class DownloadDataAccident extends React.Component {
           <ExcelColumn label="Info diterima" value="EVENT_TIME" />
           <ExcelColumn label="Time" value="TIME" />
           <ExcelColumn label="STA" value="STA" />
+          <ExcelColumn label="ODOL"
+            value={(col) => Number(col.ODOL) === 1 ? "ODOL" : "NORMAL"} />
           <ExcelColumn label="LANE" value="LANE" />
           <ExcelColumn label="Posisi Kecelakaan" value="POSITION_NAME" />
           <ExcelColumn label="Nomor Kendaraan" value="VEHICLE_IDENTIFICATION" />

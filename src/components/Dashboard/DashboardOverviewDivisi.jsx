@@ -94,6 +94,7 @@ class DashboardOverviewDivisi extends Component {
     var pekbang = []
     var inpra = []
     var inkis = []
+    var pacin = []
     var divisionPercent = 0 + '%'
     var fs = []
     var rp = []
@@ -187,6 +188,14 @@ class DashboardOverviewDivisi extends Component {
     inkis['potholes'] = 0
     inkis['rawpercentage'] = []
     inkis['percentage'] = 'loading'
+    pacin['lalin'] = 0
+    pacin['transaksi'] = 0
+    pacin['settlement'] = []
+    pacin['rekeningKoran'] = []
+    pacin['safety'] = 100
+    pacin['potholes'] = 0
+    pacin['rawpercentage'] = []
+    pacin['percentage'] = 'loading'
 
 
     bagiHasilSettlement.forEach((val, index) => {
@@ -251,6 +260,10 @@ class DashboardOverviewDivisi extends Component {
               inkis['rawpercentage'].push(val2.TRANSACTION_YEARLY_PERCENTAGE)
               inkis['rawpercentage'].push(val2.TRAFFIC_YEARLY_PERCENTAGE)
             }
+            else if (val2.RUAS_CODE === 'PACIN') {
+              pacin['rawpercentage'].push(val2.TRANSACTION_YEARLY_PERCENTAGE)
+              pacin['rawpercentage'].push(val2.TRAFFIC_YEARLY_PERCENTAGE)
+            }
           }
         })
       }
@@ -280,6 +293,8 @@ class DashboardOverviewDivisi extends Component {
           inpra['settlement'].push(val2)
         } else if (val1.ruas_code === 'INKIS') {
           inkis['settlement'].push(val2)
+        } else if (val1.ruas_code === 'PACIN') {
+          pacin['settlement'].push(val2)
         }
         fs.push(val2)
       })
@@ -306,6 +321,8 @@ class DashboardOverviewDivisi extends Component {
           inpra['rekeningKoran'].push(val3)
         } else if (val1.ruas_code === 'INKIS') {
           inkis['rekeningKoran'].push(val3)
+        } else if (val1.ruas_code === 'PACIN') {
+          pacin['rekeningKoran'].push(val3)
         }
         rp.push(val3)
       })
@@ -322,6 +339,7 @@ class DashboardOverviewDivisi extends Component {
     pekbang['settlement'] = pekbang['settlement'].reduce((a, b) => a + b, 0)
     inpra['settlement'] = inpra['settlement'].reduce((a, b) => a + b, 0)
     inkis['settlement'] = inkis['settlement'].reduce((a, b) => a + b, 0)
+    pacin['settlement'] = pacin['settlement'].reduce((a, b) => a + b, 0)
 
 
 
@@ -336,6 +354,7 @@ class DashboardOverviewDivisi extends Component {
     pekbang['rekeningKoran'] = pekbang['rekeningKoran'].reduce((a, b) => a + b, 0)
     inpra['rekeningKoran'] = inpra['rekeningKoran'].reduce((a, b) => a + b, 0)
     inkis['rekeningKoran'] = inkis['rekeningKoran'].reduce((a, b) => a + b, 0)
+    pacin['rekeningKoran'] = pacin['rekeningKoran'].reduce((a, b) => a + b, 0)
 
 
 
@@ -350,6 +369,7 @@ class DashboardOverviewDivisi extends Component {
     pekbang['rawpercentage'].push(pekbang['rekeningKoran'] / pekbang['settlement'] * 100)
     inpra['rawpercentage'].push(inpra['rekeningKoran'] / inpra['settlement'] * 100)
     inkis['rawpercentage'].push(inkis['rekeningKoran'] / inkis['settlement'] * 100)
+    pacin['rawpercentage'].push(pacin['rekeningKoran'] / pacin['settlement'] * 100)
 
     fs = fs.reduce((a, b) => a + b, 0)
     rp = rp.reduce((a, b) => a + b, 0)
@@ -379,6 +399,8 @@ class DashboardOverviewDivisi extends Component {
         inpra['safety'] = 100 - (val.T_KECELAKAAN * val.SECTION_LENGTH / Math.pow(10, 8))
       } else if (val.RUAS_CODE === 'INKIS') {
         inkis['safety'] = 100 - (val.T_KECELAKAAN * val.SECTION_LENGTH / Math.pow(10, 8))
+      } else if (val.RUAS_CODE === 'PACIN') {
+        pacin['safety'] = 100 - (val.T_KECELAKAAN * val.SECTION_LENGTH / Math.pow(10, 8))
       }
       safety_level.push(100 - (val.T_KECELAKAAN * val.SECTION_LENGTH / Math.pow(10, 8)))
     })
@@ -394,6 +416,7 @@ class DashboardOverviewDivisi extends Component {
     pekbang['rawpercentage'].push(pekbang['safety'])
     inpra['rawpercentage'].push(inpra['safety'])
     inkis['rawpercentage'].push(inkis['safety'])
+    pacin['rawpercentage'].push(pacin['safety'])
 
     safety_level = safety_level.reduce((a, b) => a + b, 0) / safety_level.length
     safety_level = safety_level.toString()
@@ -469,6 +492,12 @@ class DashboardOverviewDivisi extends Component {
         } else {
           inkis['potholes'] = 100 - (val.NOT_HANDLING / val.TOTAL_POTHOLES * 100)
         }
+      } else if (val.RUAS_CODE === 'PACIN') {
+        if (isNaN(val.NOT_HANDLING / val.TOTAL_POTHOLES * 100)) {
+          pacin['potholes'] = 100
+        } else {
+          pacin['potholes'] = 100 - (val.NOT_HANDLING / val.TOTAL_POTHOLES * 100)
+        }
       }
       potholes_resume['ontrack'].push(val.NOT_HANDLING)
       potholes_resume['total'].push(val.TOTAL_POTHOLES)
@@ -485,6 +514,7 @@ class DashboardOverviewDivisi extends Component {
     pekbang['rawpercentage'].push(pekbang['potholes'])
     inpra['rawpercentage'].push(inpra['potholes'])
     inkis['rawpercentage'].push(inkis['potholes'])
+    pacin['rawpercentage'].push(pacin['potholes'])
 
     potholes_resume['ontrack'] = potholes_resume['ontrack'].reduce((a, b) => a + b, 0)
     potholes_resume['total'] = potholes_resume['total'].reduce((a, b) => a + b, 0)
@@ -535,6 +565,10 @@ class DashboardOverviewDivisi extends Component {
     if (inkis['rawpercentage'].length === 5) {
       sumPercentage = inkis['rawpercentage'].reduce((a, b) => a + b, 0)
       inkis['percentage'] = (sumPercentage / inkis['rawpercentage'].length).toFixed(2)
+    }
+    if (pacin['rawpercentage'].length === 5) {
+      sumPercentage = pacin['rawpercentage'].reduce((a, b) => a + b, 0)
+      pacin['percentage'] = (sumPercentage / pacin['rawpercentage'].length).toFixed(2)
     }
 
     let a = percentage.percentageDivisi.PROSENTASE_TRANSAKSI_YEARLY.replace(' %', '');
@@ -664,6 +698,14 @@ class DashboardOverviewDivisi extends Component {
                   width2={{ width: '60%', letterSpacing: '2px' }}
                   toggle={this.toggle}
                 />
+                {/* <OverviewTableRuasList
+                  ruas={'PACIN'}
+                  value={pacin['percentage']}
+                  style={{ color: '#fffF' }}
+                  width1={{ width: '40%', letterSpacing: '2px' }}
+                  width2={{ width: '60%', letterSpacing: '2px' }}
+                  toggle={this.toggle}
+                /> */}
               </Col>
             </Row>
           </Col>

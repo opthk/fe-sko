@@ -23,6 +23,7 @@ const initialState = {
   data: '',
   readOnly: true,
   activeTab: new Array(1).fill('1'),
+  is_odol: 0,
   status: '',
   branch: '',
   sta: '',
@@ -151,12 +152,14 @@ class NewSenkom extends Component {
       information: this.state.information,
       vehicle_assistance: this.state.vehicle_assistance,
       created_by: identity.username,
-      updated_by: updated_by
+      updated_by: updated_by,
+      is_odol: parseInt(this.state.is_odol),
+
     }
     if (this.props.add) {
-      dispatch(senkomActions.createDataSenkom(formSenkom, identity.branch_code,table_option));
+      dispatch(senkomActions.createDataSenkom(formSenkom, identity.branch_code, table_option));
     } else {
-      dispatch(senkomActions.updateDataSenkom(formSenkom, identity.branch_code,table_option));
+      dispatch(senkomActions.updateDataSenkom(formSenkom, identity.branch_code, table_option));
     }
   }
 

@@ -17,6 +17,8 @@ class DownloadDataSenkom extends React.Component {
           <ExcelColumn label="Waktu dikonfirmasi" value="EVENT_CONFIRM" />
           <ExcelColumn label="TKP Clear" value="TKP_CLEAR" />
           <ExcelColumn label="Gangguan" value="INTERFERENCE_TYPE" />
+          <ExcelColumn label="ODOL"
+            value={(col) => Number(col.ODOL) === 1 ? "ODOL" : "NORMAL"} />
           <ExcelColumn label="STA" value="STA" />
           <ExcelColumn label="JALUR" value="LANE" />
           <ExcelColumn label="Jenis Kendaraan" value="VEHICLE_TYPE" />
