@@ -191,16 +191,43 @@ class DefaultLayout extends Component {
   }
 
   render() {
+    const isSentimentPage = this.props.location.pathname === '/dashboard-sentiment-analysis';
+
     return (
       <div className="app">
         {this.state.headerStyle}
         <div className="app-body">
           {this.state.sidebarStyle}
-          {/* <main className="main" style={{ backgroundImage: `url(https://www.wallpaperup.com/uploads/wallpapers/2012/09/09/13488/cccbd13a14435316fad1681eb17fb6e1.jpg` }}> */}
-          <main className="main" style={this.state.landingStyle}>
-            <div style={this.state.overlay}></div>
+
+          <main
+            className="main"
+            style={
+              isSentimentPage
+                ? {
+                  backgroundImage: 'none',
+                  background: '#0b1a31',
+                  minHeight: '100vh',
+                  width: '100%',
+                  position: 'relative',
+                }
+                : this.state.landingStyle
+            }
+          >
+            {!isSentimentPage && <div style={this.state.overlay}></div>}
+
             {this.state.breadCumb}
-            <Container fluid>
+
+            <Container
+              fluid
+              style={
+                isSentimentPage
+                  ? {
+                    paddingLeft: 0,
+                    paddingRight: 0,
+                  }
+                  : {}
+              }
+            >
               <Suspense fallback={this.loading()}>
                 <Switch>
                   {routes.map((route, idx) => {
@@ -212,14 +239,16 @@ class DefaultLayout extends Component {
                         name={route.name}
                         render={props => (
                           <route.component {...props} />
-                        )} />
-                    ) : (null);
+                        )}
+                      />
+                    ) : null;
                   })}
                   {this.state.landing}
                 </Switch>
               </Suspense>
             </Container>
           </main>
+
           <AppAside fixed>
             <Suspense fallback={this.loading()}>
               <DefaultAside />
@@ -227,7 +256,7 @@ class DefaultLayout extends Component {
           </AppAside>
         </div>
         {this.state.footer}
-      </div >
+      </div>
     );
   }
 }

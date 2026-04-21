@@ -7,6 +7,7 @@
   "copyright": "Copyright 2019 IT Dev OPJT",
   "license": "MIT",
   "private": true,
+  "proxy": "http://localhost:4000",
   "repository": {
     "type": "git",
     "url": "https://gitlab.com/rizky.rachmawan/hk-dashboard-frontend.git"
@@ -64,12 +65,12 @@
     "sass": "^1.81.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
     "start:server": "node server",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "test:cov": "react-scripts test --coverage",
-    "test:debug": "react-scripts --inspect-brk test --runInBand",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
+    "test": "NODE_OPTIONS=--openssl-legacy-provider react-scripts test",
+    "test:cov": "NODE_OPTIONS=--openssl-legacy-provider react-scripts test --coverage",
+    "test:debug": "NODE_OPTIONS=--openssl-legacy-provider react-scripts --inspect-brk test --runInBand",
     "eject": "react-scripts eject"
   },
   "bugs": {

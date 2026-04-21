@@ -15,6 +15,7 @@ const ImportData = React.lazy(() => import('./views/ImportData/ImportData'));
 const EditPassword = React.lazy(() => import('./views/Profile/EditPassword'));
 const PageNotFound = React.lazy(() => import('./views/Pages/Page404/Page404'));
 const rtms = React.lazy(() => import('./views/Rtms/RtmsPage'));
+const SentimentAnalysis = React.lazy(() => import('./views/SentimentAnalysis/SentimentAnalysis'));
 
 const routes = [
   { path: '/', exact: true, name: 'Home', component: DefaultLayout },
@@ -30,9 +31,13 @@ const routes = [
   { path: '/dashboard-accident-report', name: 'Accident Report', component: AccidentReport },
   { path: '/dashboard-potholes', name: 'Potholes', component: Potholes },
   { path: '/dashboard-import', name: 'Import Data', component: ImportData },
+  { path: '/dashboard-sentiment-analysis', name: 'Sentiment Analysis', component: SentimentAnalysis },
   { path: '/404', name: '404', component: PageNotFound },
   { path: '/edit-password', name: 'Edit Password', component: EditPassword },
   { path: '/dashboard-rtms', name: 'Remote Traffic Microwave Sensor (RTMS)', component: rtms },
 ];
 
 export default routes;
+
+
+
