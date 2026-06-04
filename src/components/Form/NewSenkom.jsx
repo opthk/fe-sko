@@ -8,7 +8,9 @@ import {
   Button,
   Container,
 } from 'reactstrap';
+import axios from 'axios';
 import { senkomActions } from '../../store/action'
+import { config } from '../../config'
 import NewSenkomFirstPage from './NewSenkomFirstPage';
 import NewSenkomSecondPage from './NewSenkomSecondPage';
 import NewSenkomThirdPage from './NewSenkomThirdPage';
@@ -23,10 +25,38 @@ class NewSenkom extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
       page: 1,
-      tempInterference: false
+      tempInterference: false,
+      minDate: ''
     };
     this.closeModal = this.closeModal.bind(this);
+  }
 
+  calcMinDate = (date) => {
+    let year, month, day;
+    if (date.getDate() < 3) {
+      const prev = new Date(date.getFullYear(), date.getMonth() - 1, 1);
+      year = prev.getFullYear();
+      month = prev.getMonth() + 1;
+      day = 1;
+    } else {
+      year = date.getFullYear();
+      month = date.getMonth() + 1;
+      day = 3;
+    }
+    return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}T00:00`;
+  }
+
+  fetchServerTime = () => {
+    const token = localStorage.getItem('x-access-token');
+    axios.get(config.HK_DASHBOARD_GLOBAL_API + '/senkom/data', {
+      headers: { 'x-access-token': token },
+      params: { option: { rowsPerPage: 1, page: 0 } }
+    }).then(response => {
+      const serverDate = response.headers['date'] ? new Date(response.headers['date']) : new Date();
+      this.setState({ minDate: this.calcMinDate(serverDate) });
+    }).catch(() => {
+      this.setState({ minDate: this.calcMinDate(new Date()) });
+    });
   }
 
   nextPage(values) {
@@ -71,6 +101,9 @@ class NewSenkom extends Component {
     if (this.props.idsenkom !== nextProps.idsenkom) {
       dispatch(senkomActions.getDataSenkom(nextProps.idsenkom));
     }
+    if (!this.props.modal && nextProps.modal && nextProps.add) {
+      this.fetchServerTime();
+    }
   }
 
   render() {
@@ -90,6 +123,7 @@ class NewSenkom extends Component {
                   interference={interference}
                   vehicle={vehicle}
                   disabled={this.props.view}
+                  minDate={this.props.add ? this.state.minDate : undefined}
                 />}
               {page === 2 &&
                 <NewSenkomSecondPage

@@ -10,7 +10,7 @@ import {
 } from 'reactstrap';
 
 let NewSenkomFirstPage = props => {
-  const { handleSubmit, ruas, interference, vehicle, disabled } = props;
+  const { handleSubmit, ruas, interference, vehicle, disabled, minDate } = props;
 
   const renderShift = ({ input, meta: { touched, error } }) => (
     <div>
@@ -163,6 +163,7 @@ let NewSenkomFirstPage = props => {
             labelSize="4"
             inputSize="8"
             disabled={disabled}
+            min={minDate}
           />
         </Col>
         <Col md="1">
@@ -185,6 +186,7 @@ let NewSenkomFirstPage = props => {
             labelSize="4"
             inputSize="8"
             disabled={disabled}
+            min={minDate}
           />
         </Col>
       </Row>

@@ -386,7 +386,8 @@ class SenkomHandling extends Component {
                 <Edit />
               </IconButton>
             }
-            if (this.state.action.delete) {
+            const identity = JSON.parse(localStorage.getItem('identity'))
+            if (this.state.action.delete && identity.ID_GROUP === 1) {
               del = <IconButton size="small" aria-label="Details" value={value} title="Delete" color="primary" onClick={() => this.handleDeleteData(value, 'delete')} >
                 <Delete />
               </IconButton>
