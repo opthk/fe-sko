@@ -381,12 +381,12 @@ class SenkomHandling extends Component {
             detail = <IconButton size="small" aria-label="Details" value={value} title="Details" color="primary" onClick={() => this.handleClickOpen(value, 'detail')} >
               <Search />
             </IconButton>
-            if (this.state.action.edit) {
+            const identity = JSON.parse(localStorage.getItem('identity'))
+            if (this.state.action.edit && identity.ID_GROUP === 1) {
               edit = <IconButton size="small" aria-label="Details" value={value} title="Edit" color="primary" onClick={() => this.handleClickOpen(value, 'edit')} >
                 <Edit />
               </IconButton>
             }
-            const identity = JSON.parse(localStorage.getItem('identity'))
             if (this.state.action.delete && identity.ID_GROUP === 1) {
               del = <IconButton size="small" aria-label="Details" value={value} title="Delete" color="primary" onClick={() => this.handleDeleteData(value, 'delete')} >
                 <Delete />
