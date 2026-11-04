@@ -80,7 +80,7 @@ class FilterExcelSenkom extends Component {
     }
 
     return (
-      <Modal isOpen={this.props.modal} toggle={this.props.toggle} className={'modal-lg ' + this.props.className}>
+      <Modal isOpen={this.props.modal} toggle={this.props.toggle} className={`modal-lg sko-modal-dark ${this.props.className || ''}`}>
         <Form onSubmit={this.handleSubmit} noValidate>
           <ModalHeader toggle={this.props.toggle}>{this.state.type} Export Data Senkom to Excel
           </ModalHeader>
@@ -113,7 +113,7 @@ class FilterExcelSenkom extends Component {
           </ModalBody>
           <ModalFooter>
             <Button type="submit" color="primary">Search</Button>
-            <Button color="secondary" color="danger" onClick={this.props.onclose}>Close</Button>
+            <Button color="secondary" onClick={this.props.onclose}>Close</Button>
             <div style={excelStyle}>
               {excel}
             </div>

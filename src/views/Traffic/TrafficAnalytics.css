@@ -1,0 +1,569 @@
+/* ---------- Filter bar ---------- */
+.sko-filterbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(15, 34, 44, 0.85);
+  color-scheme: dark;
+}
+
+.sko-filterbar__presets,
+.sko-filterbar__range {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.sko-filterbar__range {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+}
+
+.sko-filterbar__range input,
+.sko-filterbar__select {
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 13px;
+}
+
+.sko-filterbar__range input:focus,
+.sko-filterbar__select:focus {
+  outline: none;
+  border-color: #ec1e24;
+  box-shadow: 0 0 0 3px rgba(236, 30, 36, 0.2);
+}
+
+.sko-filterbar__select option {
+  background: #102530;
+}
+
+.sko-chip {
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.sko-chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.sko-chip:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(236, 30, 36, 0.25);
+}
+
+.sko-chip.is-active {
+  border-color: transparent;
+  background: linear-gradient(135deg, #ec1e24 0%, #c3141a 100%);
+  color: #fff;
+}
+
+.sko-chip:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* ---------- KPI tiles ---------- */
+/* 4 equal cards: 4 columns -> 2x2 -> 1 column; rows stretch to equal height */
+.sko-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.sko-kpi {
+  --kpi-accent: #5ed6ff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 150px;
+  padding: 18px 20px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: #0f222c;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+/* thin accent line on top, same position on every card */
+.sko-kpi::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--kpi-accent);
+  opacity: 0.85;
+}
+
+.sko-kpi--senkom { --kpi-accent: #3987e5; }
+.sko-kpi--accident { --kpi-accent: #d95926; }
+.sko-kpi--handling { --kpi-accent: #5ed6ff; }
+.sko-kpi--victim { --kpi-accent: #d03b3b; }
+
+.sko-kpi__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sko-kpi__label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.sko-kpi__icon {
+  flex: 0 0 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--kpi-accent);
+  font-size: 15px;
+}
+
+.sko-kpi__value {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 10px 0 12px;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.sko-kpi__value small {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* footer always pinned to the bottom so every card lines up */
+.sko-kpi__foot {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.sko-kpi__foot b {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.sko-kpi__split {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.sko-kpi__split span {
+  display: flex;
+  flex-direction: column;
+}
+
+.sko-kpi__split i {
+  font-style: normal;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sko-kpi__split b {
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.sko-kpi__split .is-fatal b {
+  color: #ff6b6b;
+}
+
+@media (max-width: 1199.98px) {
+  .sko-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575.98px) {
+  .sko-kpis {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Panels ---------- */
+.sko-panel {
+  margin-bottom: 20px;
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: #0f222c;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.sko-panel__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.sko-panel__title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.sko-panel__subtitle {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sko-panel__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 180px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.sko-analytics__body.is-loading {
+  opacity: 0.55;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+/* ---------- Hotspot table ---------- */
+.sko-hotspots {
+  overflow-x: auto;
+}
+
+.sko-hotspots table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.sko-hotspots th {
+  padding: 10px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+  background: #0b1a22;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.sko-hotspots td {
+  padding: 9px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  white-space: nowrap;
+}
+
+.sko-hotspots tbody tr:hover {
+  background: rgba(94, 214, 255, 0.06);
+}
+
+.sko-hotspots .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.sko-hotspots .muted { color: rgba(255, 255, 255, 0.45); }
+.sko-hotspots .strong { font-weight: 700; color: #fff; }
+
+.sko-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+.sko-hotspots__total {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  min-width: 120px;
+}
+
+.sko-hotspots__track {
+  display: block;
+  width: 80px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.sko-hotspots__bar {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.4);
+  transform-origin: left center;
+  animation: sko-grow-x 0.9s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+
+/* ---------- Donut ---------- */
+.sko-donut__chart {
+  position: relative;
+}
+
+.sko-donut__center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: sko-fade-in 0.6s 0.3s ease both;
+}
+
+.sko-donut__center b {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.sko-donut__center span {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sko-donut__legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.sko-donut__legend li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.sko-donut__legend li:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sko-donut__legend .sko-dot {
+  margin-right: 2px;
+}
+
+.sko-donut__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sko-donut__legend b {
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.sko-donut__pct {
+  width: 38px;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.5);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Subtle motion ---------- */
+/* Cards and panels rise in, staggered; hover lifts them a hair. */
+/* fill-mode "backwards" (not "both") so the finished animation releases
+   transform and the hover lift below can still apply */
+.sko-kpi,
+.sko-panel {
+  animation: sko-rise 0.5s cubic-bezier(0.25, 1, 0.5, 1) backwards;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sko-kpi:nth-child(1) { animation-delay: 0ms; }
+.sko-kpi:nth-child(2) { animation-delay: 60ms; }
+.sko-kpi:nth-child(3) { animation-delay: 120ms; }
+.sko-kpi:nth-child(4) { animation-delay: 180ms; }
+
+/* charts come in just after the KPI row */
+.sko-analytics__body .sko-panel { animation-delay: 240ms; }
+
+.sko-kpi:hover,
+.sko-panel:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
+}
+
+.sko-kpi::before {
+  transform-origin: left center;
+  animation: sko-grow-x 0.8s 0.25s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+
+.sko-kpi:hover .sko-kpi__icon {
+  transform: scale(1.06);
+}
+
+.sko-kpi__icon {
+  transition: transform 0.2s ease;
+}
+
+.sko-hotspots tbody tr {
+  animation: sko-fade-in 0.4s ease both;
+}
+
+.sko-chip,
+.sko-filterbar__range input,
+.sko-filterbar__select {
+  transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+}
+
+@keyframes sko-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sko-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sko-grow-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sko-kpi,
+  .sko-panel,
+  .sko-kpi::before,
+  .sko-hotspots__bar,
+  .sko-hotspots tbody tr,
+  .sko-donut__center {
+    animation: none;
+  }
+
+  .sko-kpi:hover,
+  .sko-panel:hover {
+    transform: none;
+  }
+}
+
+/* ---------- States ---------- */
+.sko-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 280px;
+  padding: 32px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: #0f222c;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 14px;
+  text-align: center;
+}
+
+.sko-state--denied > i {
+  font-size: 34px;
+  color: #ff4a4f;
+}
+
+.sko-state h4 {
+  margin: 0;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.sko-state p {
+  max-width: 420px;
+  margin: 0;
+}
+
+.sko-state__spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: #ec1e24;
+  border-radius: 50%;
+  animation: sko-analytics-spin 0.8s linear infinite;
+}
+
+@keyframes sko-analytics-spin {
+  to { transform: rotate(360deg); }
+}
+
+.sko-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 10px 14px;
+  border: 1px solid rgba(236, 30, 36, 0.4);
+  border-radius: 10px;
+  background: rgba(236, 30, 36, 0.12);
+  color: #ffb3b5;
+  font-size: 13px;
+}
+
+@media (max-width: 767.98px) {
+  .sko-filterbar__range {
+    margin-left: 0;
+  }
+}

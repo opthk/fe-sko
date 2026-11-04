@@ -10,6 +10,7 @@ const TodayChart = React.lazy(() => import('./views/Chart/TodayChart.js'));
 const DasboardAccident = React.lazy(() => import('./views/Dashboard/DashboardAccident'));
 const SenkomHandling = React.lazy(() => import('./views/Traffic/SenkomHandling'));
 const AccidentReport = React.lazy(() => import('./views/Traffic/AccidentReport'));
+const TrafficAnalytics = React.lazy(() => import('./views/Traffic/TrafficAnalytics'));
 const Potholes = React.lazy(() => import('./views/Potholes/Potholes'));
 const ImportData = React.lazy(() => import('./views/ImportData/ImportData'));
 const EditPassword = React.lazy(() => import('./views/Profile/EditPassword'));
@@ -29,6 +30,7 @@ const routes = [
   { path: '/transaction-chart', name: 'Transaction Chart', component: TodayChart },
   { path: '/dashboard-senkom', name: 'Senkom Handling', component: SenkomHandling },
   { path: '/dashboard-accident-report', name: 'Accident Report', component: AccidentReport },
+  { path: '/dashboard-traffic-analytics', name: 'Traffic Analytics', component: TrafficAnalytics },
   { path: '/dashboard-potholes', name: 'Potholes', component: Potholes },
   { path: '/dashboard-import', name: 'Import Data', component: ImportData },
   { path: '/dashboard-sentiment-analysis', name: 'Sentiment Analysis', component: SentimentAnalysis },

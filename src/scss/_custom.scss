@@ -1,1 +1,621 @@
 // Here you can add other styles
+
+// ============================================================
+// SKO theme: header, sidebar, breadcrumb (matches Login page)
+// ============================================================
+$sko-navy: #0b1a22;
+$sko-navy-2: #0f2430;
+$sko-red: #ec1e24;
+$sko-cyan: #5ed6ff;
+
+// ---------- Header ----------
+.app-header.navbar {
+  background: linear-gradient(90deg, $sko-navy 0%, $sko-navy-2 100%);
+  border-bottom: 0;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+
+  // thin red accent line along the bottom
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: linear-gradient(90deg, $sko-red 0%, rgba($sko-red, 0.4) 40%, rgba($sko-red, 0) 100%);
+    pointer-events: none;
+  }
+
+  .navbar-brand {
+    padding: 0 12px;
+
+    img {
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+    }
+  }
+
+  .navbar-toggler {
+    border-radius: 8px;
+    transition: background 0.15s;
+
+    &:hover,
+    &:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .navbar-toggler-icon,
+    &:hover .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23ffffff' stroke-width='2.25' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+  }
+
+  .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+// Header title (center/left of header)
+.sko-header__title {
+  display: flex;
+  flex-direction: column;
+  margin-left: 12px;
+  line-height: 1.15;
+  color: #fff;
+
+  strong {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+
+    span {
+      color: #ff4a4f;
+    }
+  }
+
+  small {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8fe3ff;
+  }
+}
+
+.sko-header__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3ddc97;
+  box-shadow: 0 0 8px rgba(61, 220, 151, 0.8);
+}
+
+// User chip (avatar + name)
+.sko-header__user.nav-link,
+.app-header .navbar-nav .sko-header__user.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 12px;
+  padding: 4px 12px 4px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  transition: background 0.15s, border-color 0.15s;
+
+  &:hover,
+  &:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.22);
+  }
+
+  .img-avatar {
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    border: 2px solid rgba($sko-red, 0.8);
+  }
+
+  .fa-angle-down {
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+.sko-header__user-name {
+  max-width: 160px;
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+// Dropdown menu
+.app-header .dropdown-menu {
+  min-width: 200px;
+  margin-top: 8px;
+  padding: 6px;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+
+  .dropdown-header {
+    margin: -6px -6px 6px;
+    padding: 12px 14px;
+    border-bottom: 1px solid #eef2f5;
+    background: #f7f9fb;
+    color: #3a4654;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 9px 12px;
+    border: 0;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #1c2530;
+
+    i {
+      width: 18px;
+      margin: 0 6px 0 0;
+      color: #8a96a3;
+    }
+
+    &:hover,
+    &:focus {
+      background: #f1f4f7;
+
+      i {
+        color: $sko-red;
+      }
+    }
+
+    &.sko-header__logout {
+      color: #c3141a;
+
+      i {
+        color: #c3141a;
+      }
+
+      &:hover,
+      &:focus {
+        background: #fdecec;
+      }
+    }
+  }
+}
+
+// ---------- Sidebar ----------
+// Solid navy on normal pages (glass over a light grey page just looks muddy),
+// frosted glass only when there is a photo behind it.
+.app .sidebar {
+  background: linear-gradient(180deg, #0f2430 0%, $sko-navy 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.18);
+
+  .sidebar-nav {
+    padding: 12px 0;
+  }
+
+  .sidebar-nav,
+  .nav {
+    background: transparent;
+  }
+
+  .nav-title {
+    padding: 1rem 1.25rem 0.4rem;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  // Top-level links
+  .nav-link {
+    position: relative;
+    margin: 2px 12px;
+    padding: 0.6rem 0.85rem;
+    border-radius: 8px;
+    font-size: 13.5px;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.78);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background 0.15s, color 0.15s;
+
+    .nav-icon {
+      width: 20px;
+      margin: 0 10px 0 0;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.5);
+      transition: color 0.15s;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+
+      .nav-icon {
+        color: $sko-cyan;
+      }
+    }
+
+    &.active {
+      background: rgba($sko-red, 0.16);
+      color: #fff;
+      font-weight: 600;
+
+      .nav-icon {
+        color: #ff4a4f;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 8px;
+        bottom: 8px;
+        width: 3px;
+        border-radius: 0 3px 3px 0;
+        background: $sko-red;
+      }
+    }
+  }
+
+  // Dropdown parent: no boxed background when open
+  .nav-dropdown.open {
+    background: transparent;
+
+    > .nav-dropdown-toggle {
+      color: #fff;
+
+      .nav-icon {
+        color: $sko-cyan;
+      }
+    }
+  }
+
+  .nav-dropdown-toggle::before {
+    right: 0.85rem;
+    opacity: 0.6;
+  }
+
+  // Nested links: indented under a thin guide line, no extra boxes
+  .nav-dropdown-items {
+    margin: 2px 0 6px 31px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+
+    .nav-link {
+      margin: 1px 12px 1px 0;
+      padding: 0.45rem 0.85rem 0.45rem 1rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.65);
+
+      .nav-icon {
+        display: none;
+      }
+
+      &.active {
+        background: rgba($sko-red, 0.14);
+
+        &::before {
+          left: -1px;
+          top: 6px;
+          bottom: 6px;
+          border-radius: 0 2px 2px 0;
+        }
+      }
+    }
+
+    // second-level dropdown inside a dropdown
+    .nav-dropdown-items {
+      margin-left: 14px;
+    }
+  }
+
+  .sidebar-header,
+  .sidebar-footer {
+    background: transparent;
+  }
+
+  .sidebar-minimizer {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.35);
+    }
+  }
+}
+
+// Frosted glass only over the photo background
+.sko-photo-bg .sidebar {
+  background: rgba(8, 20, 27, 0.62);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border-right-color: rgba(255, 255, 255, 0.1);
+}
+
+// Minimized sidebar: icon-only, undo the spacing above
+.sidebar-minimized .sidebar {
+  .nav-link {
+    margin: 0;
+    padding: 0.75rem 0;
+    border-radius: 0;
+    overflow: visible;
+
+    .nav-icon {
+      width: 50px;
+      margin: 0;
+    }
+  }
+
+  .nav-dropdown-items {
+    margin: 0;
+    border-left: 0;
+
+    .nav-link {
+      margin: 0;
+      padding: 0.6rem 1rem;
+      border-radius: 0;
+    }
+  }
+
+  .nav-item:hover > .nav-link {
+    background: #13303d;
+  }
+
+  .nav-item:hover > .nav-dropdown-items {
+    background: #0f2430;
+  }
+}
+
+// ---------- Footer ----------
+.app-footer {
+  background: $sko-navy;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+
+  a {
+    color: $sko-cyan;
+  }
+}
+
+// ---------- Breadcrumb ----------
+.app-body .main .breadcrumb {
+  margin-bottom: 1.5rem;
+  padding: 0.65rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(11, 26, 34, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-size: 13px;
+
+  .breadcrumb-item {
+    color: rgba(255, 255, 255, 0.55);
+
+    a {
+      color: $sko-cyan;
+    }
+
+    &.active {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    + .breadcrumb-item::before {
+      color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+// ---------- Dark modal (forms) ----------
+// Usage: <Modal className="modal-lg sko-modal-dark">
+.sko-modal-dark {
+  color-scheme: dark; // dark native date/time pickers & scrollbars
+
+  .modal-content {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    background: linear-gradient(180deg, #102530 0%, $sko-navy 100%);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+    color: rgba(255, 255, 255, 0.88);
+    overflow: hidden;
+  }
+
+  .modal-header {
+    position: relative;
+    padding: 18px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background: linear-gradient(90deg, $sko-red 0%, rgba($sko-red, 0.3) 45%, rgba($sko-red, 0) 100%);
+    }
+
+    .modal-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .close {
+      color: rgba(255, 255, 255, 0.7);
+      text-shadow: none;
+      opacity: 1;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  .modal-body {
+    padding: 22px 24px;
+  }
+
+  .modal-footer {
+    padding: 14px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  // Section headings & dividers inside the form
+  h6 {
+    margin: 18px 0 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $sko-cyan;
+  }
+
+  hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  label,
+  .col-form-label {
+    padding-top: 8px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.72);
+
+    b {
+      color: #fff;
+    }
+  }
+
+  // Inputs, selects, textareas
+  .form-control {
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 13px;
+    transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    &:focus {
+      border-color: $sko-red;
+      background-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 0 3px rgba($sko-red, 0.2);
+      color: #fff;
+    }
+
+    &:disabled,
+    &[readonly] {
+      border-color: rgba(255, 255, 255, 0.06);
+      background-color: rgba(255, 255, 255, 0.02);
+      color: rgba(255, 255, 255, 0.6);
+      opacity: 1;
+    }
+  }
+
+  textarea.form-control {
+    height: auto;
+    padding-top: 10px;
+  }
+
+  select.form-control option {
+    background: #102530;
+    color: #fff;
+  }
+
+  // Validation messages (rendered with inline red color)
+  span[style*='eb1e24'] {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #ff7a7e !important;
+  }
+
+  // Buttons
+  .btn {
+    min-width: 96px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .btn-primary {
+    border: 0;
+    background: linear-gradient(135deg, $sko-red 0%, #c3141a 100%);
+    box-shadow: 0 8px 18px rgba($sko-red, 0.3);
+
+    &:hover,
+    &:focus,
+    &:not(:disabled):not(.disabled):active {
+      background: linear-gradient(135deg, #ff3238 0%, #d0171d 100%);
+      box-shadow: 0 10px 22px rgba($sko-red, 0.4);
+    }
+  }
+
+  .btn-danger,
+  .btn-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+
+    &:hover,
+    &:focus,
+    &:not(:disabled):not(.disabled):active {
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      box-shadow: none;
+    }
+  }
+
+  .btn-success {
+    border: 1px solid rgba(61, 220, 151, 0.45);
+    background: rgba(61, 220, 151, 0.12);
+    color: #7ff0bf;
+
+    &:hover,
+    &:focus,
+    &:not(:disabled):not(.disabled):active {
+      border-color: rgba(61, 220, 151, 0.7);
+      background: rgba(61, 220, 151, 0.22);
+      color: #a6f5d3;
+      box-shadow: none;
+    }
+  }
+
+  // Remove-row (trash) buttons inside repeated groups stay compact
+  .btn-danger .fa-trash {
+    color: #ff7a7e;
+  }
+
+  .btn:disabled {
+    opacity: 0.5;
+  }
+}
+
+// Darker backdrop behind dark modals
+.modal-backdrop.show {
+  opacity: 0.7;
+}

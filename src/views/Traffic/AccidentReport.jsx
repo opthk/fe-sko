@@ -1,23 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MUIDataTable from "mui-datatables";
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import {
-  Col,
-  Row,
-  Button,
-} from 'reactstrap';
-import Search from "@material-ui/icons/Search";
-import Edit from "@material-ui/icons/Edit";
-import Delete from "@material-ui/icons/Delete";
-import IconButton from '@material-ui/core/IconButton';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import {
   accessActions,
   accidentActions,
-  senkomActions,
   ruasActions,
 } from '../../store/action';
 import FilterExcelAccident from '../../components/Modals/FilterExcelAccident';
+import PageHeader, { PageHeaderButton } from '../../components/PageHeader/PageHeader';
+import skoTableTheme from '../../components/Table/skoTableTheme';
+
+const tableTheme = skoTableTheme();
 
 class AccidentReport extends Component {
   constructor(props) {
@@ -72,36 +66,6 @@ class AccidentReport extends Component {
     }, 1);
   }
 
-
-  getMuiTheme = () => createMuiTheme({
-    typography: {
-      useNextVariants: true,
-    },
-    overrides: {
-      MUIDataTable: {
-        responsiveScroll: {
-          minHeight: '550px'
-        }
-      },
-      MUIDataTableBodyCell: {
-        root: {
-          fontSize: 10,
-        }
-      },
-      MUIDataTableHeadCell: {
-        root: {
-          padding: "0px 5px 0px 40px",
-          textAlign: "center"
-        }
-      },
-      MuiTableCell: {
-        root: {
-          padding: "0px 5px 0px 30px",
-          textAlign: "center"
-        }
-      }
-    }
-  })
 
   componentWillMount() {
     const { dispatch, history } = this.props
@@ -183,7 +147,6 @@ class AccidentReport extends Component {
 
   render() {
     const { accidentFilter, accidentReport } = this.props
-    let add
     const columns = [
       {
         name: "No",
@@ -370,38 +333,30 @@ class AccidentReport extends Component {
     ]
 
     return (
-      <div>
-        <Row>
-          <Col>
-            {add}
-            <Button className="float-right" color="success" onClick={() => this.handleFilter(0)} style={{ marginRight: '10px' }}>Download Excel</Button>
-          </Col>
-        </Row>
-        <br />
-        <Row>
-          <Col>
-            <MuiThemeProvider theme={this.getMuiTheme()}>
-              <MUIDataTable
-                title={''}
-                data={accidentReport}
-                columns={columns}
-                options={this.state.options}
-                print={false}
-              />
-            </MuiThemeProvider>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            &nbsp;
-          </Col>
-        </Row>
+      <div className="animated fadeIn">
+        <PageHeader
+          icon="icon-shield"
+          title="Accident Report"
+          subtitle="Rekap kejadian kecelakaan beserta korban, posisi, cuaca, dan penyebab."
+          count={Number(this.state.options.count) || 0}
+        >
+          <PageHeaderButton variant="excel" icon="fa fa-file-excel-o" onClick={() => this.handleFilter(0)}>Download Excel</PageHeaderButton>
+        </PageHeader>
+        <MuiThemeProvider theme={tableTheme}>
+          <MUIDataTable
+            title={'Daftar Kecelakaan'}
+            data={accidentReport}
+            columns={columns}
+            options={this.state.options}
+            print={false}
+          />
+        </MuiThemeProvider>
+        <div style={{ height: 24 }} />
         <FilterExcelAccident
           modal={this.state.filter}
           onclose={this.handleOnClose}
         />
-
-      </div >
+      </div>
     )
   }
 

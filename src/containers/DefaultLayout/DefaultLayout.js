@@ -24,6 +24,13 @@ const DefaultAside = React.lazy(() => import('./DefaultAside'));
 const DefaultFooter = React.lazy(() => import('./DefaultFooter'));
 const DefaultHeader = React.lazy(() => import('./DefaultHeader'));
 
+// Pages rendered on the dark navy background (dark tables / panels)
+const DARK_PAGES = [
+  '/dashboard-senkom',
+  '/dashboard-accident-report',
+  '/dashboard-traffic-analytics',
+];
+
 class DefaultLayout extends Component {
 
   constructor(props) {
@@ -192,26 +199,58 @@ class DefaultLayout extends Component {
 
   render() {
     const isSentimentPage = this.props.location.pathname === '/dashboard-sentiment-analysis';
+    const landingStyle = this.state.landingStyle || {};
+    const { pathname } = this.props.location;
+    const identity = this.props.myIdentity;
+    // Decide the photo background from the current path on every render
+    // (state.landingStyle is only refreshed on navigation, so a direct load of
+    // /landing-page used to show the grey background instead of the photo).
+    const isNightPhotoPage = pathname === '/landing-page' ||
+      (pathname === '/dashboard-overview' && !!identity && identity.ID_GROUP !== 5);
+    const photoImage = isNightPhotoPage
+      ? 'url(/assets/img/wallpaper/night-lights-road-y4.jpg)'
+      : landingStyle.backgroundImage;
+    // When the page uses a photo background, paint it on the whole app (fixed)
+    // so it also shows through the glass sidebar; <main> becomes transparent.
+    const hasPhotoBg = !isSentimentPage && !!photoImage && photoImage !== 'none';
+    const appStyle = hasPhotoBg
+      ? {
+        backgroundColor: '#0b1a22',
+        backgroundImage: photoImage,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
+      }
+      : undefined;
+    const mainStyle = isSentimentPage
+      ? {
+        backgroundImage: 'none',
+        background: '#0b1a31',
+        minHeight: '100vh',
+        width: '100%',
+        position: 'relative',
+      }
+      : hasPhotoBg
+        ? { ...landingStyle, backgroundImage: 'none', backgroundColor: 'transparent' }
+        : DARK_PAGES.indexOf(pathname) !== -1
+          ? {
+            ...landingStyle,
+            backgroundImage: 'radial-gradient(ellipse at top left, #13303d 0%, #0b1a22 55%, #08131a 100%)',
+            backgroundColor: '#0b1a22',
+            backgroundAttachment: 'fixed',
+          }
+          : landingStyle;
 
     return (
-      <div className="app">
+      <div className={`app${hasPhotoBg ? ' sko-photo-bg' : ''}`} style={appStyle}>
         {this.state.headerStyle}
         <div className="app-body">
           {this.state.sidebarStyle}
 
           <main
             className="main"
-            style={
-              isSentimentPage
-                ? {
-                  backgroundImage: 'none',
-                  background: '#0b1a31',
-                  minHeight: '100vh',
-                  width: '100%',
-                  position: 'relative',
-                }
-                : this.state.landingStyle
-            }
+            style={mainStyle}
           >
             {!isSentimentPage && <div style={this.state.overlay}></div>}
 

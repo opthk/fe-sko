@@ -111,9 +111,10 @@ class NewSenkom extends Component {
     const { ruas, interference, vehicle, accident_option, vehicle_assistance } = this.props
     return (
       <div>
-        <Modal isOpen={this.props.modal} toggle={this.closeModal} className={'modal-lg ' + this.props.className}>
-          <ModalHeader toggle={this.closeModal}>{this.state.type} Data Senkom
-           </ModalHeader>
+        <Modal isOpen={this.props.modal} toggle={this.closeModal} className={`modal-lg sko-modal-dark ${this.props.className || ''}`}>
+          <ModalHeader toggle={this.closeModal}>
+            {this.props.add ? 'Tambah' : this.props.edit ? 'Edit' : 'Detail'} Data Senkom
+          </ModalHeader>
           <ModalBody>
             <Container>
               {page === 1 &&

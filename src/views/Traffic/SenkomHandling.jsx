@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MUIDataTable from "mui-datatables";
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import {
-  Col,
-  Row,
-  Button,
-} from 'reactstrap';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import Search from "@material-ui/icons/Search";
 import Edit from "@material-ui/icons/Edit";
 import Delete from "@material-ui/icons/Delete";
@@ -23,6 +18,10 @@ import {
 } from '../../store/action';
 import NewSenkom from '../../components/Form/NewSenkom';
 import FilterExcelSenkom from '../../components/Modals/FilterExcelSenkom';
+import PageHeader, { PageHeaderButton } from '../../components/PageHeader/PageHeader';
+import skoTableTheme from '../../components/Table/skoTableTheme';
+
+const tableTheme = skoTableTheme();
 
 class SenkomHandling extends Component {
   constructor(props) {
@@ -76,30 +75,6 @@ class SenkomHandling extends Component {
     this.handleFilterChange = this.handleFilterChange.bind(this)
     this.dataTableAction = this.dataTableAction.bind(this);
   }
-
-  getMuiTheme = () => createMuiTheme({
-    typography: {
-      useNextVariants: true,
-    },
-    overrides: {
-      MUIDataTableBodyCell: {
-        root: {
-          fontSize: 10,
-        }
-      },
-      MUIDataTableHeadCell: {
-        root: {
-          padding: "0px 5px 0px 60px",
-        }
-      },
-      MuiTableCell: {
-        root: {
-          padding: "0px 5px 0px 2px",
-          textAlign: "center"
-        }
-      }
-    }
-  })
 
   componentWillMount() {
     const { dispatch, history } = this.props
@@ -378,7 +353,7 @@ class SenkomHandling extends Component {
             let detail
             let edit
             let del
-            detail = <IconButton size="small" aria-label="Details" value={value} title="Details" color="primary" onClick={() => this.handleClickOpen(value, 'detail')} >
+            detail = <IconButton size="small" aria-label="Details" value={value} title="Details" color="default" onClick={() => this.handleClickOpen(value, 'detail')} >
               <Search />
             </IconButton>
             const identity = JSON.parse(localStorage.getItem('identity'))
@@ -388,52 +363,46 @@ class SenkomHandling extends Component {
               </IconButton>
             }
             if (this.state.action.delete && identity.ID_GROUP === 1) {
-              del = <IconButton size="small" aria-label="Details" value={value} title="Delete" color="primary" onClick={() => this.handleDeleteData(value, 'delete')} >
+              del = <IconButton size="small" aria-label="Details" value={value} title="Delete" color="secondary" onClick={() => this.handleDeleteData(value, 'delete')} >
                 <Delete />
               </IconButton>
             }
             return (
-              <div >
+              <div style={{ whiteSpace: 'nowrap' }}>
                 {detail}
                 {edit}
                 {del}
-              </div >
+              </div>
             );
           }
         }
       },
     ]
     if (this.state.action.create) {
-      add = <Button className="float-right" color="primary" onClick={() => this.handleClickOpen(0, 'add')}>New data</Button>
+      add = <PageHeaderButton variant="primary" icon="fa fa-plus" onClick={() => this.handleClickOpen(0, 'add')}>Data Baru</PageHeaderButton>
     }
 
     return (
-      <div>
-        <Row>
-          <Col>
-            {add}
-            <Button className="float-right" color="success" onClick={() => this.handleFilter(0)} style={{ marginRight: '10px' }}>Download Excel</Button>
-          </Col>
-        </Row>
-        <br />
-        <Row>
-          <Col>
-            <MuiThemeProvider theme={this.getMuiTheme()}>
-              <MUIDataTable
-                title={''}
-                data={senkom}
-                columns={columns}
-                options={this.state.options}
-                print={false}
-              />
-            </MuiThemeProvider>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            &nbsp;
-          </Col>
-        </Row>
+      <div className="animated fadeIn">
+        <PageHeader
+          icon="icon-earphones-alt"
+          title="Senkom Handling"
+          subtitle="Laporan penanganan gangguan lalu lintas oleh petugas Senkom."
+          count={Number(this.state.options.count) || 0}
+        >
+          <PageHeaderButton variant="excel" icon="fa fa-file-excel-o" onClick={() => this.handleFilter(0)}>Download Excel</PageHeaderButton>
+          {add}
+        </PageHeader>
+        <MuiThemeProvider theme={tableTheme}>
+          <MUIDataTable
+            title={'Daftar Penanganan'}
+            data={senkom}
+            columns={columns}
+            options={this.state.options}
+            print={false}
+          />
+        </MuiThemeProvider>
+        <div style={{ height: 24 }} />
         <NewSenkom
           modal={this.state.modal}
           onclose={this.handleOnClose}
@@ -453,7 +422,7 @@ class SenkomHandling extends Component {
           onclose={this.handleOnClose}
           interference={this.props.interference}
         />
-      </div >
+      </div>
     )
   }
 

@@ -12,6 +12,25 @@ export const userActions = {
   updatePassword
 }
 
+// Fallback icons for top-level menus whose `menu_icon` is empty in the backend.
+// Keys are matched (case-insensitive) against the menu name.
+const FALLBACK_MENU_ICONS = [
+  ['traffic', 'icon-directions'],
+  ['accident', 'icon-shield'],
+  ['pothole', 'icon-wrench'],
+  ['rtms', 'icon-graph'],
+  ['sentiment', 'icon-bubbles'],
+  ['import', 'icon-cloud-upload'],
+  ['report', 'icon-doc'],
+  ['dashboard', 'icon-speedometer'],
+];
+
+function fallbackMenuIcon(name) {
+  const lower = (name || '').toLowerCase();
+  const match = FALLBACK_MENU_ICONS.find(([key]) => lower.indexOf(key) !== -1);
+  return match ? match[1] : 'icon-folder';
+}
+
 function getMyIdentity() {
   const token = localStorage.getItem('x-access-token');
   return dispatch => {
@@ -23,7 +42,7 @@ function getMyIdentity() {
         for (i = 0; i < a.length; i++) {
           a[i]['name'] = a[i].menu_name;
           a[i]['url'] = a[i].menu_url;
-          a[i]['icon'] = a[i].menu_icon;
+          a[i]['icon'] = (a[i].menu_icon && a[i].menu_icon.trim()) || fallbackMenuIcon(a[i].menu_name);
           delete a[i].menu_name;
           delete a[i].menu_url;
           delete a[i].menu_icon;

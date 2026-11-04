@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Col, Row } from 'reactstrap';
-import { loginActions } from '../../../store/action'
+import './LandingPage.css';
+
+const getGreeting = (hour) => {
+  if (hour < 11) return 'Selamat Pagi';
+  if (hour < 15) return 'Selamat Siang';
+  if (hour < 19) return 'Selamat Sore';
+  return 'Selamat Malam';
+};
 
 class LandingPage extends Component {
 
@@ -10,66 +16,71 @@ class LandingPage extends Component {
     super(props);
     this.state = {
       username: '',
-      password: '',
-      appcode: '2',
-      visible: false,
+      now: new Date(),
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange = (e) => {
-    let newState = {}
-    newState[e.target.name] = e.target.value
-    this.setState(newState)
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const dataLogin = {
-      username: this.state.username,
-      password: this.state.password,
-      id_application: this.state.appcode,
+  componentDidMount() {
+    let identity = null;
+    try {
+      identity = JSON.parse(localStorage.getItem('identity'));
+    } catch (e) {
+      identity = null;
     }
-    const { dispatch } = this.props;
-    dispatch(loginActions.login(dataLogin));
+    this.setState({ username: (identity && identity.first_name) || '' });
+    this.timer = setInterval(() => this.setState({ now: new Date() }), 1000);
   }
 
-  componentDidMount(nextProps) {
-    var identity = JSON.parse(localStorage.getItem('identity'))
-    this.setState({
-      username: identity.first_name,
-    });
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
   render() {
+    const { username, now } = this.state;
+    const time = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+    const date = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
     return (
-      <div className="jumbotron" style={{ backgroundColor: 'rgba(0, 0, 0, 0)', color: '#fff', textAlign: "center" }}>
-        <Row>
-          <Col lg="3">
-          </Col>
-          <Col lg="6">
-            <img src={'../../../../assets/img/wallpaper/logo-site.png'} style={{ width: '20%' }} alt="hk-logo" />
-            <h1 className="display-4" style={{ fontSize: '42px' }}>Sistem Kendali Operasi Tol</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col lg="3"></Col>
-          <Col lg="6">
-            <h5 className="display-5" style={{ textTransform: 'capitalize' }}>
-              Welcome, {this.state.username} !</h5>
-          </Col>
-        </Row>
-      </div >
+      <div className="sko-landing">
+        <div className="sko-landing__inner">
+          <img className="sko-landing__logo" src="/assets/img/wallpaper/logo-site.png" alt="Hutama Karya" />
+
+          <span className="sko-landing__eyebrow">
+            <span className="sko-landing__eyebrow-dot" />
+            Command Center &middot; Online
+          </span>
+
+          <h1 className="sko-landing__title">
+            Sistem Kendali <span>Operasi Tol</span>
+          </h1>
+
+          <p className="sko-landing__greeting">
+            {getGreeting(now.getHours())}{username ? ', ' : ''}
+            {username && <strong>{username}</strong>}!
+          </p>
+
+          <div className="sko-landing__clock">
+            <div className="sko-landing__time">{time}</div>
+            <div className="sko-landing__date">{date}</div>
+          </div>
+
+          <p className="sko-landing__hint">
+            <i className="icon-menu" /> Pilih menu di sidebar untuk mulai memantau.
+          </p>
+
+          <ul className="sko-landing__features">
+            <li><i className="icon-speedometer" /> Monitoring lalu lintas</li>
+            <li><i className="icon-bell" /> Laporan insiden</li>
+            <li><i className="icon-chart" /> Laporan kinerja</li>
+          </ul>
+        </div>
+      </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    usernameAlert: state.alert.usernameAlert,
-    passwordAlert: state.alert.passwordAlert,
-    message: state.alert.message,
     loggedIn: state.login.loggedIn
   }
 }
